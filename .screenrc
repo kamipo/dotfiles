@@ -1,0 +1,11 @@
+escape 
+
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+
+startup_message off
+autodetach on
+vbell off
+defscrollback 5000
+hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
