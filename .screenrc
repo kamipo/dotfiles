@@ -9,3 +9,10 @@ autodetach on
 vbell off
 defscrollback 5000
 hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
+
+screen
+screen
+screen
+screen
+screen
+select 0

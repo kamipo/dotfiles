@@ -31,12 +31,10 @@ setopt complete_in_word
 setopt complete_aliases
 
 alias cpan-uninstall='sudo perl -MConfig -MExtUtils::Install -e '"'"'($FULLEXT=shift)=~s{-}{/}g;uninstall "$Config{sitearchexp}/auto/$FULLEXT/.packlist",1'"'"
-alias cpan-update-all='sudo perl -MCPAN -e '"'"'CPAN::Shell-»install(CPAN::Shell-»r)'"'"
+alias cpan-update-all='sudo perl -MCPAN -e '"'"'CPAN::Shell->install(CPAN::Shell->r)'"'"
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 
-alias du='du -h'
-alias df='df -h'
 alias ls='ls -a --color=tty'
 alias l.='ls -d .* --color=tty'
 alias ll='ls -l --color=tty'
@@ -45,7 +43,7 @@ alias ll='ls -l --color=tty'
 PROMPT='[%n@%m]%~%# '
 RPROMPT='[%~]'
 
-export EDITOR='vim'
+export EDITOR='vi'
 export PAGER='less'
 
 if [ $TERM = "screen" ]; then
