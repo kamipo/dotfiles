@@ -45,6 +45,7 @@ RPROMPT='[%~]'
 
 export EDITOR='vi'
 export PAGER='less'
+export PATH="/usr/local/mysql/bin:$PATH"
 
 if [ $TERM = "screen" ]; then
 #  chpwd () {
