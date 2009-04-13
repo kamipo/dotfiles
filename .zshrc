@@ -43,9 +43,11 @@ alias ll='ls -l --color=tty'
 PROMPT='[%n@%m]%~%# '
 RPROMPT='[%~]'
 
-export EDITOR='vi'
+export EDITOR='vim'
 export PAGER='less'
 export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export MANPATH="/opt/local/share/man:$MANPATH"
 
 if [ $TERM = "screen" ]; then
 #  chpwd () {
