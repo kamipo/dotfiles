@@ -30,8 +30,8 @@ setopt magic_equal_subst
 setopt complete_in_word
 setopt complete_aliases
 
-alias cpan-uninstall='sudo perl -MConfig -MExtUtils::Install -e '"'"'($FULLEXT=shift)=~s{-}{/}g;uninstall "$Config{sitearchexp}/auto/$FULLEXT/.packlist",1'"'"
-alias cpan-update-all='sudo perl -MCPAN -e '"'"'CPAN::Shell->install(CPAN::Shell->r)'"'"
+alias cpan-uninstall='perl -MConfig -MExtUtils::Install -e '"'"'($FULLEXT=shift)=~s{-}{/}g;uninstall "$Config{sitearchexp}/auto/$FULLEXT/.packlist",1'"'"
+alias cpan-update-all='perl -MCPAN -e '"'"'CPAN::Shell->install(CPAN::Shell->r)'"'"
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 
@@ -39,15 +39,18 @@ alias ls='ls -a --color=tty'
 alias l.='ls -d .* --color=tty'
 alias ll='ls -l --color=tty'
 
-#PROMPT='[%D{%Y/%m/%d %H:%M}]%(!.#.$) '
 PROMPT='[%n@%m]%~%# '
-RPROMPT='[%~]'
+#PROMPT='[%D{%Y/%m/%d %H:%M}]%(!.#.$) '
+#RPROMPT='[%~]'
 
 export EDITOR='vim'
-export PAGER='less'
-export PATH="/usr/local/mysql/bin:$PATH"
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PAGER='lv'
 export MANPATH="/opt/local/share/man:$MANPATH"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="/usr/local/mysql/bin:$PATH"
+eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
 
 if [ $TERM = "screen" ]; then
 #  chpwd () {
