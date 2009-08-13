@@ -52,6 +52,8 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
 
+umask g+w
+
 if [ $TERM = "screen" ]; then
 #  chpwd () {
 #    echo -ne "\ek`dirs`\e\\"
