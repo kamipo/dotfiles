@@ -36,7 +36,6 @@ alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 
 alias ls='ls -a --color=tty'
-alias l.='ls -d .* --color=tty'
 alias ll='ls -l --color=tty'
 
 PROMPT='[%n@%m]%~%# '
