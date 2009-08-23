@@ -45,7 +45,10 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
-eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
+
+if [ -d "$HOME/local" ]; then
+  eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
+fi
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
