@@ -38,10 +38,6 @@ alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias ls='ls -a --color=tty'
 alias ll='ls -l --color=tty'
 
-PROMPT='[%n@%m]%~%# '
-#PROMPT='[%D{%Y/%m/%d %H:%M}]%(!.#.$) '
-#RPROMPT='[%~]'
-
 export EDITOR='vim'
 export PAGER='less'
 export MANPATH="/opt/local/share/man:$MANPATH"
@@ -50,6 +46,20 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
+PROMPT='[%n@%m]%~%# '
+#PROMPT='[%D{%Y/%m/%d %H:%M}]%(!.#.$) '
 
 umask g+w
 
