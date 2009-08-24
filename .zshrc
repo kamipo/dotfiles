@@ -42,8 +42,8 @@ export EDITOR='vim'
 export PAGER='less'
 export MANPATH="/opt/local/share/man:$MANPATH"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 
 if [ -d "$HOME/local" ]; then
