@@ -19,7 +19,6 @@ setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt hist_no_store
-function history-all { history -E 1 }
 
 #setopt noclobber
 setopt auto_cd
@@ -67,12 +66,11 @@ PROMPT='[%n@%m]%~%# '
 
 umask g+w
 
+function history-all { history -E 1 }
 function chpwd() { ls }
 
 if [ $TERM = "screen" ]; then
-#  chpwd () {
-#    echo -ne "\ek`dirs`\e\\"
-#  }
+#  printf "\033P\033]0;$USER@$HOSTNAME\007\033\\"
 #  preexec () {
 #    echo -ne "\ek${1%% *}\e\\"
 #  }
