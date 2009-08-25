@@ -67,6 +67,8 @@ PROMPT='[%n@%m]%~%# '
 
 umask g+w
 
+function chpwd() { ls }
+
 if [ $TERM = "screen" ]; then
 #  chpwd () {
 #    echo -ne "\ek`dirs`\e\\"
