@@ -48,6 +48,7 @@ export PATH="/usr/local/mysql/bin:$PATH"
 
 if [ -d "$HOME/local" ]; then
   eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
+  export PATH="$HOME/local/bin:$PATH"
 fi
 
 autoload -Uz vcs_info
