@@ -50,6 +50,10 @@ if [ -d "$HOME/local" ]; then
   export PATH="$HOME/local/bin:$PATH"
 fi
 
+if [ -d "/usr/local/lib/pkgconfig" ]; then
+  export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+fi
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
@@ -62,7 +66,6 @@ precmd () {
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
 PROMPT='[%n@%m]%~%# '
-#PROMPT='[%D{%Y/%m/%d %H:%M}]%(!.#.$) '
 
 umask g+w
 
