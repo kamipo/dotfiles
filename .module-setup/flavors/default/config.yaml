@@ -1,0 +1,9 @@
+---
+author: Ryuta Kamizono
+email: kamipo@gmail.com
+plugins:
+  - Config::Basic
+  - Template
+  - Test::Makefile
+  - Additional
+  - VC::Git
