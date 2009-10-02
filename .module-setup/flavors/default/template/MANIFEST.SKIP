@@ -5,6 +5,7 @@
 ~$
 ^#
 \.old$
+\.swp$
 ^blib/
 ^pm_to_blib
 ^MakeMaker-\d
@@ -14,6 +15,7 @@
 ^t/perlcritic
 ^tools/
 \.svn/
+^\.git
 ^[^/]+\.yaml$
 ^[^/]+\.pl$
 ^\.shipit$
