@@ -1,11 +1,12 @@
 #!/bin/sh
- 
-rm ~/.zshrc ~/.zprofile ~/.screenrc ~/.vimrc ~/.vim ~/.toprc
- 
-CWD=`pwd`
-ln -s $CWD/.zshrc ~/.zshrc
-ln -s $CWD/.zprofile ~/.zprofile
-ln -s $CWD/.screenrc ~/.screenrc
-ln -s $CWD/.vimrc ~/.vimrc
-ln -s $CWD/.vim ~/.vim
-ln -s $CWD/.toprc ~/.toprc
+
+rm -v ~/.dh-make-perl ~/.module-setup ~/.zshrc ~/.zprofile ~/.screenrc ~/.vimrc ~/.vim ~/.toprc
+
+ln -sv $PWD/.dh-make-perl ~/.dh-make-perl
+ln -sv $PWD/.module-setup ~/.module-setup
+ln -sv $PWD/.zshrc ~/.zshrc
+ln -sv $PWD/.zprofile ~/.zprofile
+ln -sv $PWD/.screenrc ~/.screenrc
+ln -sv $PWD/.vimrc ~/.vimrc
+ln -sv $PWD/.vim ~/.vim
+ln -sv $PWD/.toprc ~/.toprc
