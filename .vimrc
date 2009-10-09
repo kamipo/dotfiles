@@ -54,8 +54,21 @@ nnoremap <C-n> <ESC>:bn<CR>
 
 nnoremap <C-o> :<C-u>call append(expand('.'), '')<Cr>j
 
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+nnoremap ,.  :<C-u>edit $MYVIMRC<Enter>
+nnoremap ,s. :<C-u>source $MYVIMRC<Enter>
+
+nnoremap gc `[V`]
+vnoremap gc :<C-u>normal gc<Enter>
+onoremap gc :<C-u>normal gc<Enter>
+
 au FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.cgi set ft=perl
+au BufNewFile,BufRead *.cgi  set ft=perl
+au BufNewFile,BufRead *.psgi set ft=perl
 
 function! GetStatusEx()
     let str = &fileformat
