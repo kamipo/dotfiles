@@ -6,6 +6,12 @@ colors
 
 bindkey -e
 
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
+
 ## history
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -28,6 +34,8 @@ setopt no_flow_control
 setopt magic_equal_subst
 setopt complete_in_word
 setopt complete_aliases
+
+unsetopt promptcr
 
 alias cpan-uninstall='perl -MConfig -MExtUtils::Install -e '"'"'($FULLEXT=shift)=~s{-}{/}g;uninstall "$Config{sitearchexp}/auto/$FULLEXT/.packlist",1'"'"
 alias cpan-update-all='perl -MCPAN -e '"'"'CPAN::Shell->install(CPAN::Shell->r)'"'"
