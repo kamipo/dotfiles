@@ -45,6 +45,16 @@ alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias ls='ls -a --color=tty'
 alias ll='ls -l --color=tty'
 
+alias -g V='| vim -R -'
+alias -g L='| less -R'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g W='| wc'
+alias -g S='| sed'
+alias -g A='| awk'
+alias -g X='| xargs'
+
 export EDITOR='vim'
 export PAGER='less'
 export MANPATH="/opt/local/share/man:$MANPATH"
