@@ -1,0 +1,16 @@
+[user]
+	name = kamipo
+	email = kamipo@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[core]
+	excludesfile = /Users/kamipo/.gitignore
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	di = diff

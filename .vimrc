@@ -48,7 +48,7 @@ inoremap <C-k> <Up>
 "inoremap <C-h> <Left>
 "inoremap <C-l> <Right>
 
-nnoremap <C-l> <ESC>:ls<CR>
+"nnoremap <C-l> <ESC>:ls<CR>
 nnoremap <C-p> <ESC>:bp<CR>
 nnoremap <C-n> <ESC>:bn<CR>
 
