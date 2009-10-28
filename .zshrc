@@ -72,6 +72,10 @@ if [ -d "/usr/local/lib/pkgconfig" ]; then
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 fi
 
+if [ -d "/opt/local/lib" ]; then
+  export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
+fi
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
