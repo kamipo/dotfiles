@@ -37,7 +37,18 @@ setopt complete_aliases
 
 unsetopt promptcr
 
-alias cpan-uninstall='perl -MExtUtils::Install -e '"'"'uninstall @ARGV'"'"
+function cpan-uninstall {
+    perl -MConfig -MExtUtils::Install -le '
+    ($FULLEXT = shift) =~ s{::}{/}g;
+    if ($_ = $ENV{PERL_MM_OPT}) {
+        s/INSTALL_BASE=//;
+        $_ .= "/lib/perl5/$Config{archname}/auto/$FULLEXT/.packlist";
+    }
+    else {
+        $_ = "$Config{sitearchexp}/auto/$FULLEXT/.packlist";
+    }
+    uninstall $_, 1' $1
+}
 alias cpan-update-all='perl -MCPAN -e '"'"'CPAN::Shell->install(CPAN::Shell->r)'"'"
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
