@@ -37,6 +37,12 @@ setopt complete_aliases
 
 unsetopt promptcr
 
+function eiwa {
+    perl -MURI::Escape -e '
+    my $word = shift || die "usage: eiwa word\n";
+    `open -a Firefox "http://eow.alc.co.jp/${\uri_escape($word)}/UTF-8/"`;
+    ' $1
+}
 function cpan-uninstall {
     perl -MConfig -MExtUtils::Install -le '
     ($FULLEXT = shift) =~ s{::}{/}g;
