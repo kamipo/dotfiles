@@ -80,6 +80,13 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+export GISTY_DIR="$HOME/gists"
+
+export GOROOT="$HOME/go"
+export GOOS="darwin"
+export GOARCH="386"
 
 if [ -d "$HOME/local" ]; then
   eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
