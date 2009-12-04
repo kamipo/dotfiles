@@ -1,0 +1,321 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Carp;
+use Getopt::Long;
+use Pod::Usage;
+use Readonly;
+
+BEGIN {
+    my $debug_flag = $ENV{SMART_COMMENTS} || $ENV{SMART_COMMENT} || $ENV{SMART_DEBUG} || $ENV{SC};
+    if ($debug_flag) {
+        my @p = map { '#'x$_ } ($debug_flag =~ /([345])\s*/g);
+        use UNIVERSAL::require;
+        Smart::Comments->use(@p);
+    }
+}
+
+Readonly my $VERSION => '1.01';
+
+Readonly my @GLOBAL_BUFFERS  => qw(
+                                      key_buffer_size
+                                      innodb_buffer_pool_size
+                                      innodb_log_buffer_size
+                                      innodb_additional_mem_pool_size
+                                      net_buffer_length
+                                 );
+Readonly my @THREAD_BUFFERS  => qw(
+                                      sort_buffer_size
+                                      myisam_sort_buffer_size
+                                      read_buffer_size
+                                      join_buffer_size
+                                      read_rnd_buffer_size
+                                 );
+Readonly my @HEAP_LIMIT      => qw(
+                                      innodb_buffer_pool_size
+                                      key_buffer_size
+                                      sort_buffer_size
+                                      read_buffer_size
+                                      read_rnd_buffer_size
+                                 );
+Readonly my @INNODB_LOG_FILE => qw(
+                                      innodb_buffer_pool_size
+                                      innodb_log_files_in_group
+                                 );
+Readonly my @OTHER_VARIABLES => qw(
+                                      max_connections
+                                 );
+Readonly my @REQUIRE_VARIABLES => (
+    @GLOBAL_BUFFERS,
+    @THREAD_BUFFERS,
+    @HEAP_LIMIT,
+    @INNODB_LOG_FILE,
+    @OTHER_VARIABLES,
+   );
+
+MAIN: {
+    my %opt;
+    Getopt::Long::Configure("bundling");
+    GetOptions(\%opt,
+               'help|h|?') or pod2usage();
+    pod2usage() if exists $opt{'help'};
+
+    my $myvar = read_myvariables();
+    ### $myvar
+
+    validate_myvariables($myvar);
+
+    report_minimal_memory($myvar);
+    report_heap_limit($myvar);
+    report_innodb_log_file($myvar);
+
+    exit 0;
+}
+
+sub read_myvariables {
+    my $myvar;
+
+    my $mycnf     = 0;
+    my $in_mysqld = 0;
+
+    while (<>) {
+        next if /^#/;
+
+        if (/^\[/) {
+            $mycnf = 1;
+            if (/^\[mysqld\]/) {
+                $in_mysqld = 1;
+            } else {
+                $in_mysqld = 0;
+            }
+        }
+        next if $mycnf && ! $in_mysqld;
+
+        chomp;
+        s/^\|\s+//;
+
+        if (my ($name, $value) = split /[\s=|]+/, $_, 2) {
+            next if ! defined $value;
+            $value =~ s/\s*\|\s*$//;
+            $value = to_byte($value) if $value =~ /[KMG]$/;
+            $myvar->{$name} = $value;
+
+            if ($name =~ /buffer$/) {
+                $myvar->{$name.'_size'} = $value;
+            }
+        }
+    }
+
+    return $myvar;
+}
+
+sub validate_myvariables {
+    my $myvar = shift;
+
+    my %missing;
+
+    for my $k (@REQUIRE_VARIABLES) {
+        $missing{$k}++ unless exists $myvar->{ $k };
+    }
+
+    if (keys %missing) {
+        die "[ABORT] missing variables:\n  ", join("\n  ", keys %missing), "\n";
+    }
+}
+
+sub report_minimal_memory {
+    my $myvar = shift;
+
+    my $global_buffer_size;
+    for my $k (@GLOBAL_BUFFERS) {
+        $global_buffer_size += $myvar->{$k};
+    }
+
+    my $thread_buffer_size;
+    for my $k (@THREAD_BUFFERS) {
+        $thread_buffer_size += $myvar->{$k};
+    }
+
+    my $minimal_memory = $global_buffer_size + $thread_buffer_size * $myvar->{max_connections};
+
+    print <<EOHEAD;
+[ minimal memory ]
+ref
+  * ¡ØHigh Performance MySQL¡Ù, Solving Memory Bottlenecks, p125
+
+EOHEAD
+
+    print "global_buffers\n";
+    for my $k (@GLOBAL_BUFFERS) {
+        printf "  %-32s %12d  %12s\n", $k, $myvar->{$k}, add_unit($myvar->{$k});
+    }
+    print "\n";
+
+    print "thread_buffers\n";
+    for my $k (@THREAD_BUFFERS) {
+        printf "  %-32s %12d  %12s\n", $k, $myvar->{$k}, add_unit($myvar->{$k});
+    }
+    print "\n";
+
+    printf "%-34s %12d\n", 'max_connections', $myvar->{max_connections};
+    print "\n";
+
+    printf "
+min_memory_needed = global_buffers + (thread_buffers * max_connections)
+                  = %lu + %lu * %lu
+                  = %lu (%s)\n\n",
+        $global_buffer_size,
+        $thread_buffer_size,
+        $myvar->{max_connections},
+        $minimal_memory,
+        add_unit($minimal_memory),
+            ;
+}
+
+sub report_heap_limit {
+    my $myvar = shift;
+
+#    my $stack_size =   2 * 1024 * 1024; #   2 MB
+    my $stack_size = 256 * 1024;        # 256 KB
+
+    my $heap_limit_size =
+          $myvar->{innodb_buffer_pool_size}
+        + $myvar->{key_buffer_size}
+        + $myvar->{max_connections} * ( $myvar->{sort_buffer_size}
+                                      + $myvar->{read_buffer_size}
+                                      + $myvar->{read_rnd_buffer_size}
+                                      + $stack_size)
+            ;
+
+    print <<EOHEAD;
+[ 32bit Linux x86 limitation ]
+ref
+  * http://dev.mysql.com/doc/mysql/en/innodb-configuration.html
+
+  * need to include read_rnd_buffer.
+  * no need myisam_sort_buffer because allocate when repair, check alter.
+
+          2G > process heap
+process heap = innodb_buffer_pool + key_buffer
+               + max_connections * (sort_buffer + read_buffer + read_rnd_buffer)
+               + max_connections * stack_size
+             = $myvar->{innodb_buffer_pool_size} + $myvar->{key_buffer_size}
+               + $myvar->{max_connections} * ($myvar->{sort_buffer_size} + $myvar->{read_buffer_size} + $myvar->{read_rnd_buffer_size})
+               + $myvar->{max_connections} * $stack_size
+EOHEAD
+    printf "             = %lu (%s)\n\n",
+        $heap_limit_size,
+        add_unit($heap_limit_size),
+    ;
+
+    printf "          2G > %s ... %s\n\n",
+        add_unit($heap_limit_size),
+        $heap_limit_size >= 2147483648 ? 'LIMIT OVER!!' : 'safe'
+    ;
+}
+
+sub report_innodb_log_file {
+    my $myvar = shift;
+
+    my $max_innodb_log_file_size = int($myvar->{innodb_buffer_pool_size} / $myvar->{innodb_log_files_in_group});
+
+    print <<EOHEAD;
+[ maximum size of innodb_log_file_size ]
+ref
+  * http://dev.mysql.com/doc/mysql/en/innodb-start.html
+
+  1MB < innodb_log_file_size < MAX_innodb_log_file_size < 4GB
+
+MAX_innodb_log_file_size = innodb_buffer_pool_size * 1/innodb_log_files_in_group
+                         = $myvar->{innodb_buffer_pool_size} * 1/$myvar->{innodb_log_files_in_group}
+EOHEAD
+    printf "                         = %lu (%s)\n\n",
+        $max_innodb_log_file_size,
+        add_unit($max_innodb_log_file_size),
+        ;
+
+    print"    innodb_log_file_size < MAX_innodb_log_file_size\n";
+    printf "%24d < %lu\n",
+        $myvar->{innodb_log_file_size},
+        $max_innodb_log_file_size,
+        ;
+    printf "%24s < %s ... %s\n",
+        add_unit($myvar->{innodb_log_file_size}),
+        add_unit($max_innodb_log_file_size),
+        $myvar->{innodb_log_file_size} > $max_innodb_log_file_size ? 'LIMIT OVER!!' : 'safe',
+        ;
+    print "\n";
+}
+
+sub to_byte {
+    my $s = shift;
+
+    return unless $s =~ /^(\d+)([KMG])$/;
+    my $n = $1;
+    my $u = $2;
+
+    if ($u eq 'G') {
+        $n *= 1073741824
+    } elsif ($u eq 'M') {
+        $n *= 1048576
+    } elsif ($u eq 'K') {
+        $n *= 1024;
+    } else {
+        $n = 0;
+    }
+
+    return $n;
+}
+
+sub add_unit {
+    my $n = shift;
+
+    my $base = 0;
+    my $unit = '';
+
+    if ($n > 1073741824) {
+        $base = 1073741824;
+        $unit = 'G';
+    } elsif ($n > 1048576) {
+        $base = 1048576;
+        $unit = 'M';
+    } elsif ($n > 1024) {
+        $base = 1024;
+        $unit = 'K';
+    } else {
+        $base = 1;
+        $unit = '';
+    }
+
+    return sprintf "%.3f [$unit]", $n/$base;
+}
+
+__END__
+
+=head1 NAME
+
+B<mymemcheck>
+
+=head1 SYNOPSIS
+
+B<mymemcheck> I<my.cnf>
+
+  $ mymemcheck my.cnf
+
+  $ mysql ... -e 'show variables' | mymemcheck
+
+=head1 AUTHOR
+
+HIROSE, Masaaki E<lt>hirose@klab.orgE<gt>
+
+=cut
+
+# for Emacsen
+# Local Variables:
+# mode: cperl
+# cperl-indent-level: 4
+# indent-tabs-mode: nil
+# coding: euc-jp
+# End:
+
+# vi: set ts=4 sw=4 sts=0 :
