@@ -100,6 +100,11 @@ if [ -d "/opt/local/lib" ]; then
   export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
 fi
 
+if [ -f "/etc/debian_version" ]; then
+  export DEBEMAIL="kamipo@gmail.com"
+  export DEBFULLNAME="kamipo"
+fi
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
