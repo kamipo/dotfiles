@@ -35,6 +35,7 @@ setopt magic_equal_subst
 setopt complete_in_word
 setopt complete_aliases
 
+setopt prompt_subst
 unsetopt promptcr
 
 function eiwa {
@@ -117,6 +118,8 @@ precmd () {
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
 PROMPT='[%n@%m]%~%# '
+
+ulimit -c unlimited
 
 umask g+w
 
