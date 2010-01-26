@@ -14,3 +14,5 @@
 	co = checkout
 	br = branch
 	di = diff
+	pr = pull --rebase
+	tree = log --graph --pretty=oneline --abbrev-commit --decorate
