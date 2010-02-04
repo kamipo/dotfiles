@@ -63,6 +63,7 @@ alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
 
 alias ls='ls -a --color=tty'
 alias ll='ls -l --color=tty'
+alias lll='ll -t --color=tty'
 
 alias -g V='| vim -R -'
 alias -g L='| less -R'
