@@ -1,13 +1,10 @@
-#!/bin/sh
+#!/bin/sh -x
 
-rm -v ~/.dh-make-perl ~/.module-setup ~/.zshrc ~/.zprofile ~/.screenrc ~/.vimrc ~/.vim ~/.toprc ~/.inputrc
+for dotfile in .gitignore .dh-make-perl .module-setup .zshrc .zprofile .screenrc .vimrc .vim .toprc .inputrc
+do
+  rm -fr ~/$dotfile
+  ln -s $PWD/$dotfile ~/$dotfile
+done
 
-ln -sv $PWD/.dh-make-perl ~/.dh-make-perl
-ln -sv $PWD/.module-setup ~/.module-setup
-ln -sv $PWD/.zshrc ~/.zshrc
-ln -sv $PWD/.zprofile ~/.zprofile
-ln -sv $PWD/.screenrc ~/.screenrc
-ln -sv $PWD/.vimrc ~/.vimrc
-ln -sv $PWD/.vim ~/.vim
-ln -sv $PWD/.toprc ~/.toprc
-ln -sv $PWD/.inputrc ~/.inputrc
+mkdir -p ~/bin
+cp -a $PWD/bin/* ~/bin
