@@ -61,7 +61,7 @@ alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
 
-alias ls='ls -a --color=tty'
+alias ls='ls -A --color=tty'
 alias ll='ls -l --color=tty'
 alias lll='ll -t --color=tty'
 
