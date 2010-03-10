@@ -44,6 +44,7 @@ function eiwa {
     `open -a Firefox "http://eow.alc.co.jp/${\uri_escape($word)}/UTF-8/"`;
     ' $1
 }
+
 function cpan-uninstall {
     perl -MConfig -MExtUtils::Install -le '
     ($FULLEXT = shift) =~ s{::}{/}g;
@@ -56,6 +57,7 @@ function cpan-uninstall {
     }
     uninstall $_, 1' $1
 }
+
 alias cpan-update-all='perl -MCPAN -e '"'"'CPAN::Shell->install(CPAN::Shell->r)'"'"
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
@@ -90,8 +92,15 @@ export GOROOT="$HOME/go"
 export GOOS="darwin"
 export GOARCH="386"
 
-if [ -d "$HOME/local" ]; then
-  eval $(perl -I$HOME/local/lib/perl5 -Mlocal::lib=$HOME/local)
+function locallib () {
+    INSTALL_BASE=$1
+    if [ -d $INSTALL_BASE ]; then
+        eval $(~/bin/use-locallib $INSTALL_BASE)
+    fi
+}
+
+if [ -d "$HOME/perl5" ]; then
+  locallib "$HOME/perl5"
 fi
 
 if [ -d "/usr/local/lib/pkgconfig" ]; then
