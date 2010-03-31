@@ -99,7 +99,8 @@ function locallib () {
 }
 
 if [ -d "$HOME/perl5" ]; then
-  locallib "$HOME/perl5"
+  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+  #locallib "$HOME/perl5"
 fi
 
 if [ -d "/usr/local/lib/pkgconfig" ]; then
