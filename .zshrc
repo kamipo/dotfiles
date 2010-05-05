@@ -98,9 +98,13 @@ function locallib () {
     fi
 }
 
-if [ -d "$HOME/perl5" ]; then
-  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-  #locallib "$HOME/perl5"
+#if [ -d "$HOME/perl5" ]; then
+#  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+#  locallib "$HOME/perl5"
+#fi
+
+if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
+  source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
 if [ -d "/usr/local/lib/pkgconfig" ]; then
