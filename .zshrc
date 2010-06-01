@@ -131,7 +131,7 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
-PROMPT='[%n@%m]%~%# '
+PROMPT='$(owata)[%n@%m]%~%# '
 
 ulimit -c unlimited
 
@@ -139,6 +139,13 @@ umask g+w
 
 function history-all { history -E 1 }
 function chpwd() { ls }
+function owata {
+  if [ $? -eq 0 ]; then
+    echo "\\(^o^)/"
+  else
+    echo "/(^o^)\\"
+  fi
+}
 
 if [ $TERM = "screen" ]; then
 #  printf "\033P\033]0;$USER@$HOSTNAME\007\033\\"
