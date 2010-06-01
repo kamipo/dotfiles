@@ -131,7 +131,7 @@ precmd () {
 }
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
-PROMPT='$(owata)[%n@%m]%~%# '
+PROMPT='%{%(?.$fg[green].$fg[red])%}$(owata)[%n@%m]%~%#%{$reset_color%} '
 
 ulimit -c unlimited
 
