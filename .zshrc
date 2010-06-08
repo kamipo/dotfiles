@@ -85,6 +85,11 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+
+export CASSANDRA_HOME=/usr/local/cassandra
+
 export GISTY_DIR="$HOME/gists"
 
 export GOROOT="$HOME/go"
