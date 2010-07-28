@@ -1,5 +1,5 @@
 autoload -U compinit
-compinit
+compinit -u
 
 autoload -U colors
 colors
@@ -27,6 +27,7 @@ setopt hist_save_no_dups
 setopt hist_no_store
 
 #setopt noclobber
+setopt correct
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
@@ -62,9 +63,9 @@ alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
 
-alias ls='ls -A --color=tty'
-alias ll='ls -l --color=tty'
-alias lll='ll -t --color=tty'
+alias ls='ls -A --color'
+alias ll='ls -la'
+alias lll='ll -t'
 
 alias -g V='| vim -R -'
 alias -g L='| less -R'
@@ -116,8 +117,9 @@ if [ -d "/usr/local/lib/pkgconfig" ]; then
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 fi
 
-if [ -d "/opt/local/lib" ]; then
-  export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
+
+if [ -d "/usr/local/lib/python2.5/site-packages" ]; then
+  export PYTHONPATH="/usr/local/lib/python2.5/site-packages/:$PYTHONPATH"
 fi
 
 if [ -f "/etc/debian_version" ]; then
