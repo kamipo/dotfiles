@@ -1,2 +1,8 @@
 --pager
 less -R
+--type-add
+perl=.psgi,.mt,.tx
+--type-add
+ruby=.ru
+--type-add
+php=.tpl
