@@ -78,18 +78,11 @@ alias -g A='| awk'
 alias -g X='| xargs'
 
 export EDITOR='vim'
-export PAGER='less'
-export MANPATH="/opt/local/share/man:$MANPATH"
+export PAGER='less -R'
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:$PATH
-
-export CASSANDRA_HOME=/usr/local/cassandra
 
 export GISTY_DIR="$HOME/gists"
 
@@ -104,10 +97,14 @@ function locallib () {
     fi
 }
 
-#if [ -d "$HOME/perl5" ]; then
-#  eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-#  locallib "$HOME/perl5"
-#fi
+if [ -f "/usr/libexec/java_home" ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home)
+  export PATH=$JAVA_HOME/bin:$PATH
+fi
+
+if [ -d "/usr/local/cassandra" ]; then
+  export CASSANDRA_HOME=/usr/local/cassandra
+fi
 
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
   source $HOME/perl5/perlbrew/etc/bashrc
@@ -116,7 +113,6 @@ fi
 if [ -d "/usr/local/lib/pkgconfig" ]; then
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 fi
-
 
 if [ -d "/usr/local/lib/python2.5/site-packages" ]; then
   export PYTHONPATH="/usr/local/lib/python2.5/site-packages/:$PYTHONPATH"
