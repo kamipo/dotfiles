@@ -6,6 +6,7 @@ gem: "--no-ri --no-rdoc"
 :verbose: true
 :bulk_threshold: 1000
 :sources: 
-- http://gems.rubyforge.org/
-- http://gems.github.com
+- http://rubygems.org
 - http://gemcutter.org
+- http://gems.github.com
+- http://gems.rubyforge.org
