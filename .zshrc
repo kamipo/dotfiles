@@ -46,19 +46,6 @@ function eiwa {
     ' $1
 }
 
-function cpan-uninstall {
-    perl -MConfig -MExtUtils::Install -le '
-    ($FULLEXT = shift) =~ s{::}{/}g;
-    if ($_ = $ENV{PERL_MM_OPT}) {
-        s/INSTALL_BASE=//;
-        $_ .= "/lib/perl5/$Config{archname}/auto/$FULLEXT/.packlist";
-    }
-    else {
-        $_ = "$Config{sitearchexp}/auto/$FULLEXT/.packlist";
-    }
-    uninstall $_, 1' $1
-}
-
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
