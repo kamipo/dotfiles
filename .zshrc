@@ -71,6 +71,8 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
+export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
+
 export GISTY_DIR="$HOME/gists"
 
 export GOROOT="$HOME/go"
