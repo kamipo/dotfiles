@@ -46,6 +46,7 @@ function eiwa {
     ' $1
 }
 
+alias perlman='PAGER='"'"'vi -c "setf man"'"'"' perldoc -otext'
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
