@@ -114,7 +114,7 @@ fi
 
 if [ -f "/etc/debian_version" ]; then
   export DEBEMAIL="kamipo@gmail.com"
-  export DEBFULLNAME="kamipo"
+  export DEBFULLNAME="Ryuta Kamizono"
 fi
 
 autoload -Uz vcs_info
