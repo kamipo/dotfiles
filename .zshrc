@@ -96,6 +96,10 @@ if [ -d "/usr/local/cassandra" ]; then
   export CASSANDRA_HOME=/usr/local/cassandra
 fi
 
+if [ -f "/usr/local/bin/gem" ]; then
+  export PATH=$(dirname $(readlink -f /usr/local/bin/gem)):$PATH
+fi
+
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
   source $HOME/perl5/perlbrew/etc/bashrc
 fi
