@@ -2,10 +2,12 @@
 curl -LO http://xrl.us/perlbrew
 perl perlbrew init
 perl perlbrew install
+perl perlbrew install perl-5.12.2
+perl perlbrew install perl-5.12.2 -D=DEBUGGING -as perl-5.12.2-DDEBUGGING
+perl perlbrew switch perl-5.12.2
+perl perlbrew env perl-5.12.2 > .perlbrew/init
 source $HOME/perl5/perlbrew/etc/bashrc
-perlbrew install perl-5.12.2
-perlbrew install perl-5.12.2 -D=DEBUGGING -as perl-5.12.2-DDEBUGGING
-perlbrew switch perl-5.12.2
+rm ~/perlbrew
 
 # cpanm
 wget http://cpanmin.us/ -O - | perl - App::cpanminus
