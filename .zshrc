@@ -96,6 +96,10 @@ if [ -d "/usr/local/cassandra" ]; then
   export CASSANDRA_HOME=/usr/local/cassandra
 fi
 
+if [ -d "/usr/local/share/npm/bin" ]; then
+  export PATH=/usr/local/share/npm/bin:$PATH
+fi
+
 if [ -f "/usr/local/bin/gem" ]; then
   export PATH=$(dirname $(readlink -f /usr/local/bin/gem)):$PATH
 fi
