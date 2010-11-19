@@ -13,8 +13,14 @@ rm ~/perlbrew
 wget http://cpanmin.us/ -O - | perl - App::cpanminus
 
 # installing tools
-cpanm http://github.com/kazuho/kaztools/tarball/master
-cpanm cpan-upload-http
+cpanm -v Module::Install
+cpanm -v App::Ack
+cpanm -v http://github.com/kazuho/kaztools/tarball/master
+cpanm -v cpan-upload-http
 
 # homebrew
 ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)"
+
+# gisty
+gem install nokogiri
+gem install swdyh-gisty
