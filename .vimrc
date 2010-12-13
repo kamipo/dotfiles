@@ -70,6 +70,7 @@ vnoremap gc :<C-u>normal gc<Enter>
 onoremap gc :<C-u>normal gc<Enter>
 
 au FileType sql  set timeoutlen=0
+au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType perl compiler perl
 au BufNewFile,BufRead *.cgi  set ft=perl
