@@ -6,6 +6,9 @@
 	status = auto
 	branch = auto
 	interactive = auto
+[github]
+	user = kamipo
+	token = See https://github.com/account
 [core]
 	excludesfile = /Users/kamipo/.gitignore
 [alias]
@@ -16,3 +19,9 @@
 	di = diff
 	pr = pull --rebase
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
+[hooks]
+	mailinglist = kamipo+ml@gmail.com
+	announcelist = kamipo+al@gmail.com
+	envelopesender = gitnotify@kamipo.net
+	emailprefix = [gitnotify]
+	showrev = "git show -C %s; echo"
