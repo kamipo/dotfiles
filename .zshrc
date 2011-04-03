@@ -46,6 +46,8 @@ function eiwa {
     ' $1
 }
 
+alias provejs='prove --ext=.js --exec=node'
+alias provephp='prove --ext=.php --exec=php'
 alias static_httpd='plackup -MPlack::App::Directory -e '"'"'Plack::App::Directory->new({root=>"."})->to_app'"'"
 alias spell='aspell list -l en'
 alias perlman='PAGER='"'"'vi -c "setf man"'"'"' perldoc -otext'
