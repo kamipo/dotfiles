@@ -84,13 +84,6 @@ export GOROOT="$HOME/go"
 export GOOS="darwin"
 export GOARCH="386"
 
-function locallib () {
-    INSTALL_BASE=$1
-    if [ -d $INSTALL_BASE ]; then
-        eval $(~/bin/use-locallib $INSTALL_BASE)
-    fi
-}
-
 if [ -f "/usr/libexec/java_home" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=$JAVA_HOME/bin:$PATH
@@ -104,8 +97,8 @@ if [ -d "/usr/local/share/npm/bin" ]; then
   export PATH=/usr/local/share/npm/bin:$PATH
 fi
 
-if [ -f "/usr/local/bin/gem" ]; then
-  export PATH=$(dirname $(readlink -f /usr/local/bin/gem)):$PATH
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+  source $HOME/.rvm/scripts/rvm
 fi
 
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
@@ -116,8 +109,8 @@ if [ -d "/usr/local/lib/pkgconfig" ]; then
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 fi
 
-if [ -d "/usr/local/lib/python2.5/site-packages" ]; then
-  export PYTHONPATH="/usr/local/lib/python2.5/site-packages/:$PYTHONPATH"
+if [ -d "/usr/local/lib/python2.6/site-packages" ]; then
+  export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 fi
 
 if [ -f "/etc/debian_version" ]; then
