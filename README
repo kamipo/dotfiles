@@ -1,17 +1,12 @@
 # perlbrew
-curl -LO http://xrl.us/perlbrew
-perl perlbrew install
-perl perlbrew init
+curl -L http://xrl.us/perlbrewinstall | bash
 source $HOME/perl5/perlbrew/etc/bashrc
-rm ~/perlbrew
 
-perlbrew install perl-5.12.2
-perlbrew install perl-5.12.2 -D=usethreads --as perl-5.12.2-usethreads
-perlbrew install perl-5.12.2 -D=DEBUGGING  --as perl-5.12.2-DEBUGGING
-perlbrew switch perl-5.12.2
-
-# cpanm
-wget http://cpanmin.us/ -O - | perl - App::cpanminus
+perlbrew install perl-5.14.1
+perlbrew install perl-5.14.1 -D=usethreads --as perl-5.14.1-usethreads
+perlbrew install perl-5.14.1 -D=DEBUGGING  --as perl-5.14.1-DEBUGGING
+perlbrew switch  perl-5.14.1-DEBUGGING
+perlbrew install_cpanm
 
 # installing tools
 cpanm -v Module::Install
@@ -19,8 +14,16 @@ cpanm -v App::Ack
 cpanm -v http://github.com/kazuho/kaztools/tarball/master
 cpanm -v cpan-upload-http
 
+# rvm
+curl -L https://rvm.beginrescueend.com/install/rvm | bash
+source $HOME/.rvm/scripts/rvm
+rvm install ruby-1.9.2-head
+rvm use ruby-1.9.2-head
+
+gem install rails --pre
+
 # homebrew
-ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)"
+ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
 
 # gisty
 gem install nokogiri
