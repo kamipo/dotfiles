@@ -100,7 +100,6 @@ fi
 
 if [ -s "$HOME/.nvm/nvm.sh" ]; then
   source $HOME/.nvm/nvm.sh
-  nvm use v0.5.0
 fi
 
 if [ -s "$HOME/.rvm/scripts/rvm" ]; then
