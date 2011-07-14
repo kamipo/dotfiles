@@ -32,3 +32,7 @@ ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
 # gisty
 gem install nokogiri
 gem install swdyh-gisty
+
+# pear
+wget http://pear.php.net/go-pear.phar
+php -d detect_unicode=0 go-pear.phar

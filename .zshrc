@@ -93,8 +93,8 @@ if [ -d "/usr/local/cassandra" ]; then
   export CASSANDRA_HOME=/usr/local/cassandra
 fi
 
-if [ -d "/usr/local/share/npm/bin" ]; then
-  export PATH=/usr/local/share/npm/bin:$PATH
+if [ -d "$HOME/pear/bin" ]; then
+  export PATH=$HOME/pear/bin:$PATH
 fi
 
 if [ -s "$HOME/.rvm/scripts/rvm" ]; then
