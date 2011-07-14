@@ -21,8 +21,9 @@ cpanm -v cpan-upload-http
 curl -L https://rvm.beginrescueend.com/install/rvm | bash
 source $HOME/.rvm/scripts/rvm
 rvm install ruby-1.9.2-head
-rvm use ruby-1.9.2-head
+rvm use ruby-1.9.2-head --default
 
+gem install rubygems-test
 gem install rails --pre
 
 # homebrew
