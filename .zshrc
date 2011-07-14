@@ -36,6 +36,7 @@ setopt magic_equal_subst
 setopt complete_in_word
 setopt complete_aliases
 
+setopt nonomatch
 setopt prompt_subst
 unsetopt promptcr
 
@@ -95,6 +96,11 @@ fi
 
 if [ -d "$HOME/pear/bin" ]; then
   export PATH=$HOME/pear/bin:$PATH
+fi
+
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+  source $HOME/.nvm/nvm.sh
+  nvm use v0.5.0
 fi
 
 if [ -s "$HOME/.rvm/scripts/rvm" ]; then

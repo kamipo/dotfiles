@@ -26,6 +26,12 @@ rvm use ruby-1.9.2-head --default
 gem install rubygems-test
 gem install rails --pre
 
+# nvm
+git clone git://github.com/creationix/nvm.git ~/.nvm
+source $HOME/.nvm/nvm.sh
+nvm install v0.5.0
+nvm use v0.5.0
+
 # homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
 
