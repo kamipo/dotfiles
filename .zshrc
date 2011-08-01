@@ -40,13 +40,6 @@ setopt nonomatch
 setopt prompt_subst
 unsetopt promptcr
 
-function eiwa {
-    perl -MURI::Escape -e '
-    my $word = shift || die "usage: eiwa word\n";
-    `open -a Firefox "http://eow.alc.co.jp/${\uri_escape($word)}/UTF-8/"`;
-    ' $1
-}
-
 alias provejs='prove --ext=.js --exec=node'
 alias provephp='prove --ext=.php --exec=php'
 alias static_httpd='plackup -MPlack::App::Directory -e '"'"'Plack::App::Directory->new({root=>"."})->to_app'"'"
@@ -80,10 +73,6 @@ export PATH="$HOME/bin:$PATH"
 export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
 
 export GISTY_DIR="$HOME/gists"
-
-export GOROOT="$HOME/go"
-export GOOS="darwin"
-export GOARCH="386"
 
 if [ -f "/usr/libexec/java_home" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
@@ -155,8 +144,7 @@ function owata {
 }
 
 if [ $TERM = "screen" ]; then
-#  printf "\033P\033]0;$USER@$HOSTNAME\007\033\\"
-#  preexec () {
-#    echo -ne "\ek${1%% *}\e\\"
-#  }
+  preexec () {
+    echo -ne "\ek${1%% *}\e\\"
+  }
 fi
