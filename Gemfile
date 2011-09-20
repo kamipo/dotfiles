@@ -7,3 +7,5 @@ gem "capistrano"
 gem "capistrano_colors"
 gem "capistrano-ext"
 gem "railsless-deploy"
+
+gem "heroku"
