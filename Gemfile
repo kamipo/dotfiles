@@ -8,4 +8,5 @@ gem "capistrano_colors"
 gem "capistrano-ext"
 gem "railsless-deploy"
 
+gem "sass"
 gem "heroku"
