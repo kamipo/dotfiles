@@ -74,6 +74,9 @@ export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
 
 export GISTY_DIR="$HOME/gists"
 
+# for Rubinius
+export RBXOPT=-X19
+
 if [ -d "$HOME/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
