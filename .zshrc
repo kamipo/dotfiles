@@ -74,6 +74,11 @@ export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
 
 export GISTY_DIR="$HOME/gists"
 
+if [ -d "$HOME/.rbenv/bin" ]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
 if [ -f "/usr/libexec/java_home" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=$JAVA_HOME/bin:$PATH
