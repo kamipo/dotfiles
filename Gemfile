@@ -6,6 +6,7 @@ gem "rake"
 gem "capistrano"
 gem "capistrano_colors"
 gem "capistrano-ext"
+gem "capistrano_rsync_with_remote_cache"
 gem "railsless-deploy"
 
 gem "rails"
