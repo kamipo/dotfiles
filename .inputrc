@@ -5,4 +5,5 @@ $if mysql
     "\C-xu": "select user,host,password from mysql.user order by user,host;"
     "\C-xb": "select user,host,db       from mysql.db   order by user,host;"
     "\C-xc": "show create table TN\\G"
+    "\C-xl": "select t_b.trx_mysql_thread_id blocking_id, t_w.trx_mysql_thread_id requesting_id, p_b.HOST blocking_host, p_w.HOST requesting_host, l.lock_table lock_table, l.lock_index lock_index, l.lock_mode lock_mode, p_w.TIME seconds, p_b.INFO blocking_info, p_w.INFO requesting_info from information_schema.INNODB_LOCK_WAITS w, information_schema.INNODB_LOCKS l, information_schema.INNODB_TRX t_b, information_schema.INNODB_TRX t_w, information_schema.PROCESSLIST p_b, information_schema.PROCESSLIST p_w where w.blocking_lock_id = l.lock_id and w.blocking_trx_id = t_b.trx_id and w.requesting_trx_id = t_w.trx_id and t_b.trx_mysql_thread_id = p_b.ID and t_w.trx_mysql_thread_id = p_w.ID order by requesting_id, blocking_id\\G"
 $endif
