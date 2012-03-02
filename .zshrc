@@ -123,6 +123,10 @@ if [ -f `brew --prefix`/etc/autojump ]; then
   source `brew --prefix`/etc/autojump
 fi
 
+if [ -d "$HOME/.autossh" ]; then
+  source $HOME/.autossh/*
+fi
+
 if [ -f "/etc/debian_version" ]; then
   export DEBEMAIL="kamipo@gmail.com"
   export DEBFULLNAME="Ryuta Kamizono"
