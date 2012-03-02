@@ -53,6 +53,13 @@ alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
 alias be='bundle exec'
 alias ce='carton exec'
 
+# see http://d.hatena.ne.jp/hirose31/20120229/1330501968
+alias dstat-full='dstat -Tclmdrn'
+alias dstat-mem='dstat -Tclm'
+alias dstat-cpu='dstat -Tclr'
+alias dstat-net='dstat -Tclnd'
+alias dstat-disk='dstat -Tcldr'
+
 alias ls='ls -A --color'
 alias ll='ls -la'
 alias lll='ll -t'
