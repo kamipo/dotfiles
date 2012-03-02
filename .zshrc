@@ -42,6 +42,7 @@ unsetopt promptcr
 
 alias provejs='prove --ext=.js --exec=node'
 alias provephp='prove --ext=.php --exec=php'
+
 alias static_httpd='plackup -MPlack::App::Directory -e '"'"'Plack::App::Directory->new({root=>"."})->to_app'"'"
 alias spell='aspell list -l en'
 alias perlman='PAGER='"'"'vi -c "setf man"'"'"' perldoc -otext'
@@ -116,6 +117,10 @@ fi
 
 if [ -d "/usr/local/lib/python2.6/site-packages" ]; then
   export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
+fi
+
+if [ -f `brew --prefix`/etc/autojump ]; then
+  source `brew --prefix`/etc/autojump
 fi
 
 if [ -f "/etc/debian_version" ]; then
