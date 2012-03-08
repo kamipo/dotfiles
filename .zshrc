@@ -122,6 +122,10 @@ if [ -d "/usr/local/lib/python2.6/site-packages" ]; then
   export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 fi
 
+if [ -f "$(which hub)" ]; then
+  eval "$(hub alias -s zsh)"
+fi
+
 if [ -f "/usr/local/etc/autojump" ]; then
   source /usr/local/etc/autojump
 fi
