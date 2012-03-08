@@ -110,10 +110,6 @@ if [ -s "$HOME/.nvm/nvm.sh" ]; then
   source $HOME/.nvm/nvm.sh
 fi
 
-if [ -s "$HOME/.rvm/scripts/rvm" ]; then
-  source $HOME/.rvm/scripts/rvm
-fi
-
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
   source $HOME/perl5/perlbrew/etc/bashrc
 fi
