@@ -126,8 +126,8 @@ if [ -d "/usr/local/lib/python2.6/site-packages" ]; then
   export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 fi
 
-if [ -f `brew --prefix`/etc/autojump ]; then
-  source `brew --prefix`/etc/autojump
+if [ -f "/usr/local/etc/autojump" ]; then
+  source /usr/local/etc/autojump
 fi
 
 if [ -d "$HOME/.autossh" ]; then
