@@ -11,6 +11,7 @@ gem "railsless-deploy"
 
 gem "rails"
 gem "sinatra"
+gem "powder"
 
 gem "sass"
 gem "heroku"
