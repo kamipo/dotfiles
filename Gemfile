@@ -13,6 +13,7 @@ gem "rails"
 gem "sinatra"
 gem "powder"
 gem "vagrant"
+gem "sahara"
 
 gem "sass"
 gem "heroku"
