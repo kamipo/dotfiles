@@ -12,7 +12,10 @@ gem "railsless-deploy"
 gem "rails"
 gem "sinatra"
 gem "powder"
+
 gem "vagrant"
+gem "vagrantboxes"
+gem "veewee"
 gem "sahara"
 
 gem "sass"
