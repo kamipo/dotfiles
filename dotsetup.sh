@@ -7,8 +7,8 @@ cd .vim/autoload
 ln -sf ../bundle/vim-pathogen/autoload/pathogen.vim .
 cd -
 
-for dotfile in .ackrc .gemrc .gdbinit .gitignore .dh-make-perl .module-setup .zshrc .zprofile .screenrc .vimrc .vim .toprc .inputrc bin
+for dotfile in .ackrc .caprc .gdbinit .gemrc .inputrc .pryrc .screenrc .toprc .vim .vimrc .zshrc .zprofile
 do
   rm -fr ~/$dotfile
-  ln -s $PWD/$dotfile ~/$dotfile
+  ln -nfs $PWD/$dotfile ~/$dotfile
 done
