@@ -1,24 +1,35 @@
-source "http://rubygems.org"
+source 'https://rubygems.org'
 
-gem "bundler"
-gem "rake"
+gem 'bundler'
+gem 'rake'
 
-gem "capistrano"
-gem "capistrano_colors"
-gem "capistrano-ext"
-gem "capistrano_rsync_with_remote_cache"
-gem "railsless-deploy"
+gem 'capistrano'
+gem 'capistrano_colors'
+gem 'capistrano_rsync_with_remote_cache'
+gem 'capistrano-ext'
+gem 'railsless-deploy'
 
-gem "rails"
-gem "sinatra"
-gem "powder"
+gem 'rails'
+gem 'sinatra'
+gem 'padrino'
 
-gem "vagrant"
-gem "vagrantboxes"
-gem "veewee"
-gem "sahara"
+gem 'powder'
+gem 'heroku'
 
-gem "sass"
-gem "heroku"
-gem "hub"
-gem "git-issue"
+gem 'vagrant'
+gem 'vagrantboxes'
+gem 'veewee'
+gem 'sahara'
+
+gem 'sass'
+gem 'compass'
+gem 'git-issue'
+gem 'hub'
+
+gem 'pry'
+gem 'pry-doc'
+gem 'pry-nav'
+gem 'pry-exception_explorer'
+gem 'pry-stack_explorer'
+gem 'pry-coolline'
+gem 'hirb'
