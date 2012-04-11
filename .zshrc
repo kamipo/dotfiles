@@ -88,6 +88,10 @@ export GISTY_DIR="$HOME/gists"
 # for Rubinius
 export RBXOPT=-X19
 
+if [ -d "$(brew --prefix coreutils)/libexec/gnubin" ]; then
+  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+fi
+
 if [ -d "$HOME/.rbenv/bin" ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
