@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/kwbd.vim"]
 	path = .vim/bundle/kwbd.vim
 	url = git://github.com/rgarver/Kwbd.vim.git
+[submodule ".vim/bundle/nginx.vim"]
+	path = .vim/bundle/nginx.vim
+	url = git://github.com/vim-scripts/nginx.vim.git
