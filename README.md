@@ -4,7 +4,12 @@
 
 ### Homebrew
 ```
+sudo chown -R kamipo /usr/local
 ruby -e "$(curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+
+brew doctor
+sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+xcode-select -print-path
 ```
 
 ### rbenv/ruby-build
