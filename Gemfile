@@ -26,6 +26,7 @@ gem 'compass'
 gem 'git-issue'
 gem 'hub'
 gem 'gosh'
+gem 'gem-browse'
 
 gem 'pry'
 gem 'pry-doc'
