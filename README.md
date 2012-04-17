@@ -4,7 +4,7 @@
 
 ### Homebrew
 ```
-sudo chown -R kamipo /usr/local
+sudo chown -R `whoami` /usr/local
 ruby -e "$(curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
 
 brew doctor
