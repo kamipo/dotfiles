@@ -3,6 +3,9 @@
 ## Install
 
 ### Homebrew
+
+Install Xcode 4.x and [GCC](https://github.com/kennethreitz/osx-gcc-installer)
+
 ```
 sudo chown -R `whoami` /usr/local
 ruby -e "$(curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
@@ -10,6 +13,22 @@ ruby -e "$(curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contr
 brew doctor
 sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 xcode-select -print-path
+
+brew install \
+ ack \
+ aspell \
+ cmake \
+ coreutils \
+ git \
+ hub \
+ libxml2 \
+ libxslt \
+ proctools \
+ readline \
+ sqlite \
+ watch \
+ wget \
+ zsh
 ```
 
 ### rbenv/ruby-build
@@ -19,6 +38,7 @@ mkdir -p ~/.rbenv/plugins
 cd ~/.rbenv/plugins
 git clone https://github.com/sstephenson/ruby-build.git
 
+export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # ruby required libssl-dev libreadline6-dev libncurses5-dev libsqlite3-dev
@@ -33,9 +53,9 @@ rbenv rehash
 curl -kL http://install.perlbrew.pl | bash
 source $HOME/perl5/perlbrew/etc/bashrc
 
+# perlbrew install perl-5.14.2 -D=usethreads --as perl-5.14.2-usethreads
+# perlbrew install perl-5.14.2 -D=DEBUGGING  --as perl-5.14.2-DEBUGGING
 perlbrew install perl-5.14.2
-perlbrew install perl-5.14.2 -D=usethreads --as perl-5.14.2-usethreads
-perlbrew install perl-5.14.2 -D=DEBUGGING  --as perl-5.14.2-DEBUGGING
 perlbrew switch  perl-5.14.2
 perlbrew install-cpanm
 ```
