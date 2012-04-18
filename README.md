@@ -14,8 +14,10 @@ xcode-select -print-path
 
 ### rbenv/ruby-build
 ```
-brew install rbenv
-brew install ruby-build
+git clone https://github.com/sstephenson/rbenv.git .rbenv
+mkdir -p ~/.rbenv/plugins
+cd ~/.rbenv/plugins
+git clone https://github.com/sstephenson/ruby-build.git
 
 eval "$(rbenv init -)"
 
@@ -28,7 +30,7 @@ rbenv rehash
 
 ### perlbrew
 ```
-curl -L http://xrl.us/perlbrewinstall | bash
+curl -kL http://install.perlbrew.pl | bash
 source $HOME/perl5/perlbrew/etc/bashrc
 
 perlbrew install perl-5.14.2
