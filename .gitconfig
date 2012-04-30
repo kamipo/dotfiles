@@ -6,9 +6,6 @@
 	status = auto
 	branch = auto
 	interactive = auto
-[github]
-	user = kamipo
-	token = See https://github.com/account
 [core]
 	excludesfile = /Users/kamipo/.gitignore
 [alias]
