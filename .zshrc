@@ -88,7 +88,11 @@ export GISTY_DIR="$HOME/gists"
 # for Rubinius
 export RBXOPT=-X19
 
-if [ -d "$(brew --prefix coreutils)/libexec/gnubin" ]; then
+if [ -d "$HOME/mysql-build/bin" ]; then
+  export PATH="$HOME/mysql-build/bin:$PATH"
+fi
+
+if [ -d "$(brew --prefix coreutils 2>/dev/null)/libexec/gnubin" ]; then
   export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
 
