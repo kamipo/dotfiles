@@ -126,8 +126,8 @@ if [ -d "/usr/local/lib/pkgconfig" ]; then
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 fi
 
-if [ -d "/usr/local/lib/python2.6/site-packages" ]; then
-  export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
+if [ -d "/usr/local/lib/python2.7/site-packages" ]; then
+  export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:$PYTHONPATH"
 fi
 
 if [ -f "$(which hub)" ]; then
