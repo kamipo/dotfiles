@@ -40,6 +40,8 @@ setopt nonomatch
 setopt prompt_subst
 unsetopt promptcr
 
+alias mysqld-verbose-help='mysqld --verbose --help'
+
 alias provejs='prove --ext=.js --exec=node'
 alias provephp='prove --ext=.php --exec=php'
 
