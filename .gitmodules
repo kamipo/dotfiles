@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/nginx.vim"]
 	path = .vim/bundle/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
+[submodule ".vim/bundle/jsx.vim"]
+	path = .vim/bundle/jsx.vim
+	url = git://github.com/jsx/jsx.vim.git
