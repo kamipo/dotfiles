@@ -8,6 +8,7 @@
 	interactive = auto
 [core]
 	excludesfile = /Users/kamipo/.gitignore
+	quotepath = false
 [alias]
 	st = status
 	ci = commit
