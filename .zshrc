@@ -40,6 +40,10 @@ setopt nonomatch
 setopt prompt_subst
 unsetopt promptcr
 
+if [ xLinux = x`uname` ]; then
+  alias crontab='crontab -i'
+fi
+
 alias mysqld-verbose-help='mysqld --verbose --help'
 
 alias provejs='prove --ext=.js --exec=node'
