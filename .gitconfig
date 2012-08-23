@@ -9,6 +9,7 @@
 [core]
 	excludesfile = /Users/kamipo/.gitignore
 	quotepath = false
+	precomposeunicode = true
 [alias]
 	st = status
 	ci = commit
