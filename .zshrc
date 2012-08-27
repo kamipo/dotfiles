@@ -150,6 +150,13 @@ if [ -d "$HOME/.autossh" ]; then
   source $HOME/.autossh/*
 fi
 
+if [ -f "$HOME/dotfiles/cdd" ]; then
+  source $HOME/dotfiles/cdd
+  function chpwd() { ls; _reg_pwd_screennum }
+else
+  function chpwd() { ls }
+fi
+
 if [ -f "/etc/debian_version" ]; then
   export DEBEMAIL="kamipo@gmail.com"
   export DEBFULLNAME="Ryuta Kamizono"
@@ -174,10 +181,6 @@ PROMPT='%{%(?.$fg[green].$fg[red])%}$(owata)[%n@%m]%~%#%{$reset_color%} '
 ulimit -c unlimited
 ulimit -n 10240
 
-umask g+w
-
-function history-all { history -E 1 }
-function chpwd() { ls }
 function owata {
   if [ $? -eq 0 ]; then
     echo "\\(^o^)/"
