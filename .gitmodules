@@ -7,9 +7,6 @@
 [submodule ".vim/bundle/vim-quickrun"]
 	path = .vim/bundle/vim-quickrun
 	url = git://github.com/thinca/vim-quickrun.git
-[submodule ".vim/bundle/perldoc-vim"]
-	path = .vim/bundle/perldoc-vim
-	url = git://github.com/hotchpotch/perldoc-vim.git
 [submodule ".vim/bundle/vim-perl"]
 	path = .vim/bundle/vim-perl
 	url = git://github.com/petdance/vim-perl.git
@@ -28,9 +25,6 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/zencoding-vim"]
-	path = .vim/bundle/zencoding-vim
-	url = git://github.com/mattn/zencoding-vim.git
 [submodule ".vim/bundle/scss-syntax.vim"]
 	path = .vim/bundle/scss-syntax.vim
 	url = git://github.com/cakebaker/scss-syntax.vim.git
