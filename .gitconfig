@@ -26,3 +26,10 @@
 	envelopesender = gitnotify@kamipo.net
 	emailprefix = [gitnotify]
 	showrev = "git show -C %s; echo"
+[push]
+	default = upstream
+[browse-remote "github.com"]
+	top = https://{host}/{path}
+	ref = https://{host}/{path}/tree/{short_ref}
+	rev = https://{host}/{path}/commit/{commit}
+	file = "https://{host}/{path}/blob/{short_rev}/{file}{line && \"#L%d\" % line}"
