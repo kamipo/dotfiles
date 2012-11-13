@@ -71,6 +71,8 @@ nnoremap gc `[V`]
 vnoremap gc :<C-u>normal gc<Enter>
 onoremap gc :<C-u>normal gc<Enter>
 
+source $VIMRUNTIME/macros/matchit.vim
+
 au FileType sql  set timeoutlen=0
 au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType zsh  set tabstop=2 softtabstop=2 shiftwidth=2
