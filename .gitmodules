@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/vim-stylus"]
 	path = .vim/bundle/vim-stylus
 	url = git://github.com/wavded/vim-stylus.git
+[submodule ".vim/bundle/EnhCommentify.vim"]
+	path = .vim/bundle/EnhCommentify.vim
+	url = git://github.com/kamipo/EnhCommentify.vim.git
