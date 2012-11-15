@@ -18,8 +18,8 @@
 	di = diff
 	pu = pull
 	pr = pull --rebase
+	tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
-	graph = log --graph --pretty='format:%C(yellow)%h%Creset %Cgreen%an%Creset |%Cred%d%Creset %s'
 [hooks]
 	mailinglist = kamipo+ml@gmail.com
 	announcelist = kamipo+al@gmail.com
