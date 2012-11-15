@@ -48,28 +48,21 @@ highlight ZenkakuSpace cterm=underline ctermfg=lightblue
 match ZenkakuSpace /　/
 
 inoremap <C-t> <C-v><Tab>
+
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
-"inoremap <C-h> <Left>
-"inoremap <C-l> <Right>
-
-"nnoremap <C-l> <ESC>:ls<CR>
-nnoremap <C-p> <ESC>:bp<CR>
-nnoremap <C-n> <ESC>:bn<CR>
-
-nnoremap <C-o> :<C-u>call append(expand('.'), '')<Cr>j
 
 noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
 
+nnoremap <C-l> <ESC>:ls<CR>
+nnoremap <C-p> <ESC>:bp<CR>
+nnoremap <C-n> <ESC>:bn<CR>
+
 nnoremap ,.  :<C-u>edit $MYVIMRC<Enter>
 nnoremap ,s. :<C-u>source $MYVIMRC<Enter>
-
-nnoremap gc `[V`]
-vnoremap gc :<C-u>normal gc<Enter>
-onoremap gc :<C-u>normal gc<Enter>
 
 source $VIMRUNTIME/macros/matchit.vim
 
