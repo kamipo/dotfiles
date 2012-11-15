@@ -73,6 +73,8 @@ onoremap gc :<C-u>normal gc<Enter>
 
 source $VIMRUNTIME/macros/matchit.vim
 
+let g:EnhCommentifyBindInInsert = 'No'
+
 au FileType sql  set timeoutlen=0
 au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType zsh  set tabstop=2 softtabstop=2 shiftwidth=2
