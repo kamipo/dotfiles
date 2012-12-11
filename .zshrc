@@ -90,8 +90,6 @@ export PATH="$HOME/bin:$PATH"
 
 export PERL_CPANM_OPT='-nq'
 
-export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/lib
-
 export GISTY_DIR="$HOME/gists"
 
 # for Rubinius
@@ -123,8 +121,8 @@ if [ -d "$HOME/pear/bin" ]; then
   export PATH=$HOME/pear/bin:$PATH
 fi
 
-if [ -s "$HOME/.nvm/nvm.sh" ]; then
-  source $HOME/.nvm/nvm.sh
+if [ -d "/usr/local/share/npm/bin" ]; then
+  export PATH=/usr/local/share/npm/bin:$PATH
 fi
 
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
@@ -178,6 +176,8 @@ precmd () {
 
 RPROMPT="%1(v|%F{green}%1v%f|)"
 PROMPT='%{%(?.$fg[green].$fg[red])%}$(owata)[%n@%m]%~%#%{$reset_color%} '
+
+REPORTTIME=3
 
 ulimit -c unlimited
 ulimit -n 10240
