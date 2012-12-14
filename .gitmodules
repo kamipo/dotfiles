@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/EnhCommentify.vim"]
 	path = .vim/bundle/EnhCommentify.vim
 	url = git://github.com/kamipo/EnhCommentify.vim.git
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = git://github.com/mileszs/ack.vim.git
