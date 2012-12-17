@@ -7,9 +7,9 @@
 	branch = auto
 	interactive = auto
 [core]
-	excludesfile = /Users/kamipo/.gitignore
 	quotepath = false
 	precomposeunicode = true
+	excludesfile = ~/.gitignore
 [alias]
 	st = status
 	ci = commit
