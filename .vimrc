@@ -44,9 +44,20 @@ set directory=~/.vim/tmp
 set laststatus=2
 set statusline=[%n]\ %t\ %y%{GetStatusEx()}\ %m%h%r=%l/%L,%c%V\ %P
 
+function! GetStatusEx()
+    let str = &fileformat
+    if has("multi_byte") && &fileencoding != ""
+        let str = &fileencoding . ":" . str
+    endif
+    let str = "[" . str . "]"
+    return str
+endfunction
+
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue
 match ZenkakuSpace /　/
 
+inoremap <C-d> $
+inoremap <C-a> @
 inoremap <C-t> <C-v><Tab>
 
 inoremap <C-j> <Down>
@@ -57,7 +68,6 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-nnoremap <C-l> <ESC>:ls<CR>
 nnoremap <C-p> <ESC>:bp<CR>
 nnoremap <C-n> <ESC>:bn<CR>
 
@@ -77,11 +87,9 @@ au FileType perl compiler perl
 au BufNewFile,BufRead *.cgi  set ft=perl
 au BufNewFile,BufRead *.psgi set ft=perl
 
-function! GetStatusEx()
-    let str = &fileformat
-    if has("multi_byte") && &fileencoding != ""
-        let str = &fileencoding . ":" . str
-    endif
-    let str = "[" . str . "]"
-    return str
-endfunction
+map ,pt <Esc>:%! perltidy -se<CR>
+map ,ptv <Esc>:'<,'>! perltidy -se<CR>
+
+let g:quickrun_no_default_key_mappings = 1
+nmap <Leader>r <Plug>(quickrun)
+vmap <Leader>r <Plug>(quickrun)
