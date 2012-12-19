@@ -60,6 +60,7 @@ inoremap <C-d> $
 inoremap <C-a> @
 inoremap <C-t> <C-v><Tab>
 
+inoremap <C-c> <ESC>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
