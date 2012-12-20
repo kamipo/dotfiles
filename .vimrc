@@ -64,16 +64,18 @@ inoremap <C-c> <ESC>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
-nnoremap <C-p> <ESC>:bp<CR>
-nnoremap <C-n> <ESC>:bn<CR>
+nnoremap ; :
 
-nnoremap ,.  :<C-u>edit $MYVIMRC<Enter>
-nnoremap ,s. :<C-u>source $MYVIMRC<Enter>
+nnoremap <C-p> :bp<CR>
+nnoremap <C-n> :bn<CR>
+
+nnoremap ,.  :<C-u>edit $MYVIMRC<CR>
+nnoremap ,s. :<C-u>source $MYVIMRC<CR>
 
 source $VIMRUNTIME/macros/matchit.vim
 
