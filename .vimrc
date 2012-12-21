@@ -81,12 +81,13 @@ source $VIMRUNTIME/macros/matchit.vim
 
 let g:EnhCommentifyBindInInsert = 'No'
 
+let g:ctrlp_map = '<c-k>'
+
 au FileType sql  set timeoutlen=0
 au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType zsh  set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType cpp  set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
-au FileType perl compiler perl
 au BufNewFile,BufRead *.cgi  set ft=perl
 au BufNewFile,BufRead *.psgi set ft=perl
 
