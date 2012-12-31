@@ -146,9 +146,20 @@ if [ -d "$HOME/.autossh" ]; then
 fi
 
 zstyle ':completion:*' menu select
+zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
 
 typeset -ga chpwd_functions
+
+autoload -Uz is-at-least
+
+if is-at-least 4.3.11; then
+  autoload -U chpwd_recent_dirs cdr
+  chpwd_functions+=chpwd_recent_dirs
+  zstyle ":chpwd:*" recent-dirs-max 500
+  zstyle ":chpwd:*" recent-dirs-default true
+  zstyle ":completion:*" recent-dirs-insert always
+fi
 
 if [ -f "$HOME/dotfiles/cdd" ]; then
   source $HOME/dotfiles/cdd
