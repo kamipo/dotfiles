@@ -141,20 +141,22 @@ if [ -f "$(which hub)" ]; then
   eval "$(hub alias -s zsh)"
 fi
 
-if [ -f "/usr/local/etc/autojump" ]; then
-  source /usr/local/etc/autojump
-fi
-
 if [ -d "$HOME/.autossh" ]; then
   source $HOME/.autossh/*
 fi
 
+zstyle ':completion:*' menu select
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
+
+typeset -ga chpwd_functions
+
 if [ -f "$HOME/dotfiles/cdd" ]; then
   source $HOME/dotfiles/cdd
-  function chpwd() { ls; _reg_pwd_screennum }
-else
-  function chpwd() { ls }
+  chpwd_functions+=_cdd_chpwd
 fi
+
+function _ls_chpwd { ls }
+chpwd_functions+=_ls_chpwd
 
 if [ -f "/etc/debian_version" ]; then
   export DEBEMAIL="kamipo@gmail.com"
