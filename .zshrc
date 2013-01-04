@@ -40,25 +40,30 @@ setopt nonomatch
 setopt prompt_subst
 unsetopt promptcr
 
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export EDITOR='vim'
+export PAGER='less -R'
+
+export PERL_CPANM_OPT='-nq'
+export GISTY_DIR="$HOME/gists"
+# for Rubinius
+export RBXOPT=-X19
+
+source ~/dotfiles/zsh/antigenrc
+
 if [ xLinux = x`uname` ]; then
   alias crontab='crontab -i'
+  alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
 fi
 
 alias mysqld-verbose-help='mysqld --verbose --help'
-
-alias provejs='prove --ext=.js --exec=node'
-alias provephp='prove --ext=.php --exec=php'
-
 alias static_httpd='plackup -MPlack::App::Directory -e '"'"'Plack::App::Directory->new({root=>"."})->to_app'"'"
 alias spell='aspell list -l en'
-alias perlman='PAGER='"'"'vi -c "setf man"'"'"' perldoc -otext'
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
-alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
-
 alias rr='rrails --'
-alias be='bundle exec'
-alias ce='carton exec'
 
 # see http://d.hatena.ne.jp/hirose31/20120229/1330501968
 alias dstat-full='dstat -Tclmdrn'
@@ -81,20 +86,6 @@ alias -g S='| sed'
 alias -g A='| awk'
 alias -g X='| xargs'
 
-export EDITOR='vim'
-export PAGER='less -R'
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/mysql/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-
-export PERL_CPANM_OPT='-nq'
-
-export GISTY_DIR="$HOME/gists"
-
-# for Rubinius
-export RBXOPT=-X19
-
 if [ -d "$HOME/mysql-build/bin" ]; then
   export PATH="$HOME/mysql-build/bin:$PATH"
 fi
@@ -103,18 +94,9 @@ if [ -d "$(brew --prefix coreutils 2>/dev/null)/libexec/gnubin" ]; then
   export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
 
-if [ -d "$HOME/.rbenv/bin" ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
 if [ -f "/usr/libexec/java_home" ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=$JAVA_HOME/bin:$PATH
-fi
-
-if [ -d "/usr/local/cassandra" ]; then
-  export CASSANDRA_HOME=/usr/local/cassandra
 fi
 
 if [ -d "$HOME/pear/bin" ]; then
@@ -149,30 +131,20 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
 
-typeset -ga chpwd_functions
-
+autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 
 if is-at-least 4.3.11; then
   autoload -U chpwd_recent_dirs cdr
-  chpwd_functions+=chpwd_recent_dirs
+  add-zsh-hook chpwd chpwd_recent_dirs
   zstyle ":chpwd:*" recent-dirs-max 500
   zstyle ":chpwd:*" recent-dirs-default true
   zstyle ":completion:*" recent-dirs-insert always
 fi
 
-if [ -f "$HOME/dotfiles/cdd" ]; then
-  source $HOME/dotfiles/cdd
-  chpwd_functions+=_cdd_chpwd
-fi
-
 function _ls_chpwd { ls }
-chpwd_functions+=_ls_chpwd
-
-if [ -f "/etc/debian_version" ]; then
-  export DEBEMAIL="kamipo@gmail.com"
-  export DEBFULLNAME="Ryuta Kamizono"
-fi
+add-zsh-hook chpwd _ls_chpwd
+add-zsh-hook chpwd _cdd_chpwd
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn hg bzr
