@@ -1,7 +1,6 @@
 set nocompatible
 
-" add runtimepathe .vim/bundle/*
-call pathogen#runtime_append_all_bundles()
+runtime bundle/vim-unbundle/unbundle.vim
 
 syntax on
 filetype plugin on
