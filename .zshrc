@@ -52,7 +52,10 @@ export GISTY_DIR="$HOME/gists"
 # for Rubinius
 export RBXOPT=-X19
 
-source ~/dotfiles/zsh/antigenrc
+function source_if_exists() { [[ -f $1 ]] && source $1 }
+
+source_if_exists ~/dotfiles/zsh/antigenrc
+source_if_exists /usr/local/etc/profile.d/z.sh
 
 if [ xLinux = x`uname` ]; then
   alias crontab='crontab -i'
