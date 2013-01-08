@@ -5,6 +5,5 @@ antigen-bundle bundler
 
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle kamipo/zaw
-antigen-bundle kamipo/cdd
 
 antigen-apply

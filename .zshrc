@@ -49,32 +49,33 @@ export PAGER='less -R'
 
 export PERL_CPANM_OPT='-nq'
 export GISTY_DIR="$HOME/gists"
-# for Rubinius
 export RBXOPT=-X19
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' ignore-parents parent pwd ..
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
+
+autoload -Uz add-zsh-hook
+autoload -Uz is-at-least
+
+if is-at-least 4.3.11; then
+  autoload -U chpwd_recent_dirs cdr
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ":chpwd:*" recent-dirs-max 5000
+  zstyle ":chpwd:*" recent-dirs-default true
+  zstyle ":completion:*" recent-dirs-insert always
+fi
+
+function _ls_chpwd { ls }
+add-zsh-hook chpwd _ls_chpwd
 
 function source_if_exists() { [[ -f $1 ]] && source $1 }
 
 source_if_exists ~/dotfiles/zsh/antigenrc
 source_if_exists /usr/local/etc/profile.d/z.sh
 
-if [ xLinux = x`uname` ]; then
-  alias crontab='crontab -i'
-  alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
-fi
-
-alias mysqld-verbose-help='mysqld --verbose --help'
-alias static_httpd='plackup -MPlack::App::Directory -e '"'"'Plack::App::Directory->new({root=>"."})->to_app'"'"
-alias spell='aspell list -l en'
-alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
-alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
-alias rr='rrails --'
-
-# see http://d.hatena.ne.jp/hirose31/20120229/1330501968
-alias dstat-full='dstat -Tclmdrn'
-alias dstat-mem='dstat -Tclm'
-alias dstat-cpu='dstat -Tclr'
-alias dstat-net='dstat -Tclnd'
-alias dstat-disk='dstat -Tcldr'
+bindkey '^o' zaw-history
+bindkey '^x^o' zaw-cdr
 
 alias ls='ls -A --color'
 alias ll='ls -la'
@@ -89,6 +90,24 @@ alias -g W='| wc'
 alias -g S='| sed'
 alias -g A='| awk'
 alias -g X='| xargs'
+
+alias dstat-full='dstat -Tclmdrn'
+alias dstat-mem='dstat -Tclm'
+alias dstat-cpu='dstat -Tclr'
+alias dstat-net='dstat -Tclnd'
+alias dstat-disk='dstat -Tcldr'
+
+alias mysqld-verbose-help='mysqld --verbose --help'
+alias static_httpd='plackup -MPlack::App::Directory -e '"'"'Plack::App::Directory->new({root=>"."})->to_app'"'"
+alias spell='aspell list -l en'
+alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
+alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
+alias rr='rrails --'
+
+if [ xLinux = x`uname` ]; then
+  alias crontab='crontab -i'
+  alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
+fi
 
 if [ xDarwin = x`uname` ]; then
   export CONFIGURE_OPTS="--with-opt-dir=/usr/local"
@@ -134,25 +153,6 @@ fi
 if [ -d "$HOME/.autossh" ]; then
   source $HOME/.autossh/*
 fi
-
-zstyle ':completion:*' menu select
-zstyle ':completion:*' ignore-parents parent pwd ..
-zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
-
-autoload -Uz add-zsh-hook
-autoload -Uz is-at-least
-
-if is-at-least 4.3.11; then
-  autoload -U chpwd_recent_dirs cdr
-  add-zsh-hook chpwd chpwd_recent_dirs
-  zstyle ":chpwd:*" recent-dirs-max 500
-  zstyle ":chpwd:*" recent-dirs-default true
-  zstyle ":completion:*" recent-dirs-insert always
-fi
-
-function _ls_chpwd { ls }
-add-zsh-hook chpwd _ls_chpwd
-add-zsh-hook chpwd _cdd_chpwd
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' max-exports 3
