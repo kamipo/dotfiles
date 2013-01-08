@@ -1,20 +1,7 @@
---- 
-gem: "--no-ri --no-rdoc"
+---
+:verbose: true
 :benchmark: false
 :backtrace: false
 :update_sources: true
-:verbose: true
 :bulk_threshold: 1000
-:sources: 
-- http://rubygems.org
-- http://gemcutter.org
-- http://gems.github.com
-- http://gems.rubyforge.org
-test_options:
-  auto_test_on_install: false # package のインストール時に自動でテストを行うか
-  test_on_install: false # package のインストール時にテストを行うか(Y/n)で尋ねられる
-  install_development_dependencies: false # add_development_dependency なパッケージもインストールするか
-  test_development_dependencies: false # add_development_dependency なパッケージもテストするか(たぶん)
-  upload_results: false # テスト結果を test.rubygems.org にアップロードするか
-  force_install: false # テストに失敗しても強制的にインストールするか
-  force_uninstall_on_failure: false #  テストに失敗したらアンインストールするか(たぶん)
+gem: --no-ri --no-rdoc
