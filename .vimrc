@@ -80,7 +80,7 @@ source $VIMRUNTIME/macros/matchit.vim
 
 let g:EnhCommentifyBindInInsert = 'No'
 
-let g:ctrlp_map = '<c-k>'
+let g:ctrlp_map = '<c-o>'
 
 au FileType sql  set timeoutlen=0
 au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
