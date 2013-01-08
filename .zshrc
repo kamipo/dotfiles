@@ -87,6 +87,10 @@ alias -g S='| sed'
 alias -g A='| awk'
 alias -g X='| xargs'
 
+if [ xDarwin = x`uname` ]; then
+  export CONFIGURE_OPTS="--with-opt-dir=/usr/local"
+fi
+
 if [ -d "$HOME/mysql-build/bin" ]; then
   export PATH="$HOME/mysql-build/bin:$PATH"
 fi
