@@ -2,3 +2,4 @@
 *.swo
 doc/tags
 doc/tags-ja
+.netrwhist
