@@ -66,7 +66,7 @@ if is-at-least 4.3.11; then
   zstyle ":completion:*" recent-dirs-insert always
 fi
 
-function _ls_chpwd { ls }
+function _ls_chpwd { ls -A --color }
 add-zsh-hook chpwd _ls_chpwd
 
 function source_if_exists() { [[ -f $1 ]] && source $1 }
@@ -98,11 +98,22 @@ alias dstat-net='dstat -Tclnd'
 alias dstat-disk='dstat -Tcldr'
 
 alias mysqld-verbose-help='mysqld --verbose --help'
-alias static_httpd='plackup -MPlack::App::Directory -e '"'"'Plack::App::Directory->new({root=>"."})->to_app'"'"
 alias spell='aspell list -l en'
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias rr='rrails --'
+
+function static_httpd {
+  if which ruby >/dev/null 2>&1; then
+    ruby -rwebrick -e 'WEBrick::HTTPServer.new(Port: 5000, DocumentRoot: ".").start'
+  elif which python >/dev/null 2>&1; then
+    python -m SimpleHTTPServer 5000
+  elif which plackup >/dev/null 2>&1; then
+    plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root => ".")->to_app'
+  elif which php >/dev/null 2>&1 && php -v | grep -qm1 'PHP 5\.[45]\.'; then
+    php -S 0.0.0.0:5000
+  fi
+}
 
 if [ xLinux = x`uname` ]; then
   alias crontab='crontab -i'
@@ -126,12 +137,9 @@ if [ -f "/usr/libexec/java_home" ]; then
   export PATH=$JAVA_HOME/bin:$PATH
 fi
 
-if [ -d "$HOME/pear/bin" ]; then
-  export PATH=$HOME/pear/bin:$PATH
-fi
-
 if [ -d "/usr/local/share/npm/bin" ]; then
   export PATH=/usr/local/share/npm/bin:$PATH
+  export NODE_PATH=/usr/local/share/npm/lib/node_modules
 fi
 
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
