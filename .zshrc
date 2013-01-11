@@ -12,6 +12,11 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
+## zaw
+bindkey -M filterselect '^m' accept-search
+bindkey '^o' zaw-history
+bindkey '^x^o' zaw-cdr
+
 ## history
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -28,7 +33,6 @@ setopt hist_no_store
 
 setopt correct
 setopt auto_cd
-setopt auto_pushd
 setopt pushd_ignore_dups
 setopt magic_equal_subst
 setopt complete_in_word
@@ -40,42 +44,6 @@ setopt nonomatch
 setopt prompt_subst
 setopt no_prompt_cr
 setopt transient_rprompt
-
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export EDITOR='vim'
-export PAGER='less -R'
-
-export PERL_CPANM_OPT='-nq'
-export GISTY_DIR="$HOME/gists"
-export RBXOPT=-X19
-
-zstyle ':completion:*' menu select
-zstyle ':completion:*' ignore-parents parent pwd ..
-zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
-
-autoload -Uz add-zsh-hook
-autoload -Uz is-at-least
-
-if is-at-least 4.3.11; then
-  autoload -U chpwd_recent_dirs cdr
-  add-zsh-hook chpwd chpwd_recent_dirs
-  zstyle ":chpwd:*" recent-dirs-max 5000
-  zstyle ":chpwd:*" recent-dirs-default true
-  zstyle ":completion:*" recent-dirs-insert always
-fi
-
-function _ls_chpwd { ls -A --color }
-add-zsh-hook chpwd _ls_chpwd
-
-function source_if_exists() { [[ -f $1 ]] && source $1 }
-
-source_if_exists ~/dotfiles/zsh/antigenrc
-source_if_exists /usr/local/etc/profile.d/z.sh
-
-bindkey '^o' zaw-history
-bindkey '^x^o' zaw-cdr
 
 alias ls='ls -A --color'
 alias ll='ls -la'
@@ -103,9 +71,14 @@ alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 alias rr='rrails --'
 
+if [ xLinux = x`uname` ]; then
+  alias crontab='crontab -i'
+  alias hwaddr='ip link show | grep -m1 ether | awk '"'"'{print $2}'"'"
+fi
+
 function static_httpd {
   if which ruby >/dev/null 2>&1; then
-    ruby -rwebrick -e 'WEBrick::HTTPServer.new(Port: 5000, DocumentRoot: ".").start'
+    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 5000, :DocumentRoot => ".").start'
   elif which python >/dev/null 2>&1; then
     python -m SimpleHTTPServer 5000
   elif which plackup >/dev/null 2>&1; then
@@ -115,52 +88,12 @@ function static_httpd {
   fi
 }
 
-if [ xLinux = x`uname` ]; then
-  alias crontab='crontab -i'
-  alias hwaddr='ip link show|grep ether|head -1|awk '"'"'{print $2}'"'"
-fi
+function _ls_chpwd { ls -A --color }
+add-zsh-hook chpwd _ls_chpwd
 
-if [ xDarwin = x`uname` ]; then
-  export CONFIGURE_OPTS="--with-opt-dir=/usr/local"
-fi
-
-if [ -d "$HOME/mysql-build/bin" ]; then
-  export PATH="$HOME/mysql-build/bin:$PATH"
-fi
-
-if [ -d "$(brew --prefix coreutils 2>/dev/null)/libexec/gnubin" ]; then
-  export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-fi
-
-if [ -f "/usr/libexec/java_home" ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
-  export PATH=$JAVA_HOME/bin:$PATH
-fi
-
-if [ -d "/usr/local/share/npm/bin" ]; then
-  export PATH=/usr/local/share/npm/bin:$PATH
-  export NODE_PATH=/usr/local/share/npm/lib/node_modules
-fi
-
-if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ]; then
-  source $HOME/perl5/perlbrew/etc/bashrc
-fi
-
-if [ -d "/usr/local/lib/pkgconfig" ]; then
-  export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-fi
-
-if [ -d "/usr/local/lib/python2.7/site-packages" ]; then
-  export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:$PYTHONPATH"
-fi
-
-if [ -f "$(which hub)" ]; then
-  eval "$(hub alias -s zsh)"
-fi
-
-if [ -d "$HOME/.autossh" ]; then
-  source $HOME/.autossh/*
-fi
+zstyle ':completion:*' menu select
+zstyle ':completion:*' ignore-parents parent pwd ..
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' max-exports 3
