@@ -76,3 +76,6 @@
 [submodule ".vim/bundle/vim-unbundle"]
 	path = .vim/bundle/vim-unbundle
 	url = git://github.com/sunaku/vim-unbundle.git
+[submodule ".vim/bundle/vim-scala"]
+	path = .vim/bundle/vim-scala
+	url = git://github.com/derekwyatt/vim-scala.git
