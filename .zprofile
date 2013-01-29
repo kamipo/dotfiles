@@ -1,4 +1,4 @@
-if which keychain >/dev/null 2>&1; then
+if which keychain > /dev/null; then
   keychain ~/.ssh/github_key
   source ~/.keychain/$HOST-sh
 fi

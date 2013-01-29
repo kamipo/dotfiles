@@ -4,18 +4,35 @@ compinit -u
 autoload -U colors
 colors
 
-bindkey -e
+autoload -Uz add-zsh-hook
+autoload -Uz is-at-least
 
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
+## must be loaded before zaw-cdr
+if is-at-least 4.3.11; then
+  autoload -U chpwd_recent_dirs cdr
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ":chpwd:*" recent-dirs-max 5000
+  zstyle ":chpwd:*" recent-dirs-default true
+  zstyle ":completion:*" recent-dirs-insert always
+fi
+
+antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle zsh-users/zaw
 
 ## zaw
 bindkey -M filterselect '^m' accept-search
 bindkey '^o' zaw-history
 bindkey '^x^o' zaw-cdr
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^p" history-beginning-search-backward-end
+bindkey "^n" history-beginning-search-forward-end
+
+bindkey -e
+
+source_if_exists /usr/local/etc/profile.d/z.sh
 
 ## history
 HISTFILE=~/.zsh_history
@@ -69,7 +86,6 @@ alias mysqld-verbose-help='mysqld --verbose --help'
 alias spell='aspell list -l en'
 alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
-alias rr='rrails --'
 
 if [ xLinux = x`uname` ]; then
   alias crontab='crontab -i'
@@ -77,14 +93,16 @@ if [ xLinux = x`uname` ]; then
 fi
 
 function static_httpd {
-  if which ruby >/dev/null 2>&1; then
+  if which ruby > /dev/null; then
     ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 5000, :DocumentRoot => ".").start'
-  elif which python >/dev/null 2>&1; then
-    python -m SimpleHTTPServer 5000
-  elif which plackup >/dev/null 2>&1; then
+  elif which plackup > /dev/null; then
     plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root => ".")->to_app'
-  elif which php >/dev/null 2>&1 && php -v | grep -qm1 'PHP 5\.[45]\.'; then
+  elif which python > /dev/null; then
+    python -m SimpleHTTPServer 5000
+  elif which php > /dev/null && php -v | grep -qm1 'PHP 5\.[45]\.'; then
     php -S 0.0.0.0:5000
+  elif which erl > /dev/null; then
+    erl -eval 'inets:start(), inets:start(httpd, [{server_name, "httpd"}, {server_root, "."}, {document_root, "."}, {port, 5000}])'
   fi
 }
 
