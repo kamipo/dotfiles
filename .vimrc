@@ -6,6 +6,9 @@ syntax on
 filetype plugin on
 filetype indent on
 
+set background=dark
+colorscheme desert
+
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -83,6 +86,11 @@ source $VIMRUNTIME/macros/matchit.vim
 let g:EnhCommentifyBindInInsert = 'No'
 
 let g:ctrlp_map = '<c-o>'
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
 
 au FileType sql  set timeoutlen=0
 au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
