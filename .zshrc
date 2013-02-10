@@ -19,6 +19,8 @@ fi
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zaw
 
+bindkey -e
+
 ## zaw
 bindkey -M filterselect '^m' accept-search
 bindkey '^o' zaw-history
@@ -29,10 +31,6 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
-
-bindkey -e
-
-source_if_exists /usr/local/etc/profile.d/z.sh
 
 ## history
 HISTFILE=~/.zsh_history
