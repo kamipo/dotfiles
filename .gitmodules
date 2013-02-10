@@ -82,3 +82,6 @@
 [submodule ".vim/bundle/vim-indent-guides"]
 	path = .vim/bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
+[submodule ".vim/bundle/clever-f.vim"]
+	path = .vim/bundle/clever-f.vim
+	url = git://github.com/rhysd/clever-f.vim.git
