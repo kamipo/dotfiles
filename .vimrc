@@ -1,13 +1,13 @@
 set nocompatible
 
 runtime bundle/vim-unbundle/unbundle.vim
+runtime macros/matchit.vim
 
 syntax on
 filetype plugin on
 filetype indent on
 
-set background=dark
-colorscheme desert
+colorscheme jellybeans
 
 set encoding=utf-8
 set termencoding=utf-8
@@ -81,12 +81,8 @@ nnoremap <C-n> :bn<CR>
 nnoremap ,.  :<C-u>edit $MYVIMRC<CR>
 nnoremap ,s. :<C-u>source $MYVIMRC<CR>
 
-source $VIMRUNTIME/macros/matchit.vim
-
-let g:EnhCommentifyBindInInsert = 'No'
-
 let g:ctrlp_map = '<c-o>'
-
+let g:EnhCommentifyBindInInsert = 'No'
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
@@ -106,3 +102,7 @@ map ,ptv <Esc>:'<,'>! perltidy -se<CR>
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
+
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': [],
+                           \ 'passive_filetypes': ['c', 'cpp'] }
