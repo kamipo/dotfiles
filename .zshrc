@@ -73,12 +73,15 @@ alias -g W='| wc'
 alias -g S='| sed'
 alias -g A='| awk'
 alias -g X='| xargs'
+alias -g J='| jq'
 
-alias dstat-full='dstat -Tclmdrn'
-alias dstat-mem='dstat -Tclm'
-alias dstat-cpu='dstat -Tclr'
-alias dstat-net='dstat -Tclnd'
-alias dstat-disk='dstat -Tcldr'
+if which dstat > /dev/null; then
+  alias dstat-full='dstat -Tclmdrn'
+  alias dstat-mem='dstat -Tclm'
+  alias dstat-cpu='dstat -Tclr'
+  alias dstat-net='dstat -Tclnd'
+  alias dstat-disk='dstat -Tcldr'
+fi
 
 alias mysqld-verbose-help='mysqld --verbose --help'
 alias spell='aspell list -l en'
@@ -91,10 +94,10 @@ if [ xLinux = x`uname` ]; then
 fi
 
 function static_httpd {
-  if which ruby > /dev/null; then
-    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 5000, :DocumentRoot => ".").start'
-  elif which plackup > /dev/null; then
+  if which plackup > /dev/null; then
     plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root => ".")->to_app'
+  elif which ruby > /dev/null; then
+    ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 5000, :DocumentRoot => ".").start'
   elif which python > /dev/null; then
     if python -V 2>&1 | grep -qm1 'Python 3\.'; then
       python -m http.server 5000
