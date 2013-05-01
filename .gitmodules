@@ -85,3 +85,9 @@
 [submodule ".vim/bundle/clever-f.vim"]
 	path = .vim/bundle/clever-f.vim
 	url = git://github.com/rhysd/clever-f.vim.git
+[submodule ".vim/bundle/vim-hybrid"]
+	path = .vim/bundle/vim-hybrid
+	url = git://github.com/w0ng/vim-hybrid.git
+[submodule ".vim/bundle/jellybeans.vim"]
+	path = .vim/bundle/jellybeans.vim
+	url = git://github.com/nanotech/jellybeans.vim.git
