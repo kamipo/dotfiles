@@ -68,6 +68,9 @@ inoremap <C-k> <Up>
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 
+noremap <Space>h ^
+noremap <Space>l $
+
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j

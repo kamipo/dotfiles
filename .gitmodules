@@ -1,66 +1,66 @@
+[submodule ".vim/ftbundle/perl/vim-perl"]
+	path = .vim/ftbundle/perl/vim-perl
+	url = git://github.com/vim-perl/vim-perl.git
+[submodule ".vim/ftbundle/javascript/vim-javascript"]
+	path = .vim/ftbundle/javascript/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+[submodule ".vim/ftbundle/ruby/vim-ruby"]
+	path = .vim/ftbundle/ruby/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule ".vim/ftbundle/elixir/vim-elixir"]
+	path = .vim/ftbundle/elixir/vim-elixir
+	url = git://github.com/elixir-lang/vim-elixir.git
+[submodule ".vim/ftbundle/scala/vim-scala"]
+	path = .vim/ftbundle/scala/vim-scala
+	url = git://github.com/derekwyatt/vim-scala.git
+[submodule ".vim/ftbundle/go/vim-golang"]
+	path = .vim/ftbundle/go/vim-golang
+	url = git://github.com/jnwhiteh/vim-golang.git
+[submodule ".vim/ftbundle/markdown/vim-markdown"]
+	path = .vim/ftbundle/markdown/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule ".vim/ftbundle/coffee/vim-coffee-script"]
+	path = .vim/ftbundle/coffee/vim-coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/ftbundle/less/vim-less"]
+	path = .vim/ftbundle/less/vim-less
+	url = git://github.com/groenewege/vim-less.git
+[submodule ".vim/ftbundle/stylus/vim-stylus"]
+	path = .vim/ftbundle/stylus/vim-stylus
+	url = git://github.com/wavded/vim-stylus.git
+[submodule ".vim/ftbundle/slim/vim-slim"]
+	path = .vim/ftbundle/slim/vim-slim
+	url = git://github.com/slim-template/vim-slim.git
+[submodule ".vim/bundle/vim-haml"]
+	path = .vim/bundle/vim-haml
+	url = git://github.com/tpope/vim-haml.git
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vim-quickrun"]
 	path = .vim/bundle/vim-quickrun
 	url = git://github.com/thinca/vim-quickrun.git
-[submodule ".vim/bundle/vim-perl"]
-	path = .vim/bundle/vim-perl
-	url = git://github.com/petdance/vim-perl.git
-[submodule ".vim/bundle/vim-javascript"]
-	path = .vim/bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
-[submodule ".vim/bundle/vim-ruby"]
-	path = .vim/bundle/vim-ruby
-	url = git://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
-[submodule ".vim/bundle/vim-haml"]
-	path = .vim/bundle/vim-haml
-	url = git://github.com/tpope/vim-haml.git
-[submodule ".vim/bundle/vim-markdown"]
-	path = .vim/bundle/vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/scss-syntax.vim"]
-	path = .vim/bundle/scss-syntax.vim
-	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/vim-slim"]
-	path = .vim/bundle/vim-slim
-	url = git://github.com/bbommarito/vim-slim.git
 [submodule ".vim/bundle/vim-align"]
 	path = .vim/bundle/vim-align
 	url = git://github.com/tsaleh/vim-align.git
-[submodule ".vim/bundle/vim-less"]
-	path = .vim/bundle/vim-less
-	url = git://github.com/groenewege/vim-less.git
 [submodule ".vim/bundle/kwbd.vim"]
 	path = .vim/bundle/kwbd.vim
 	url = git://github.com/rgarver/Kwbd.vim.git
 [submodule ".vim/bundle/nginx.vim"]
 	path = .vim/bundle/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
-[submodule ".vim/bundle/jsx.vim"]
-	path = .vim/bundle/jsx.vim
-	url = git://github.com/jsx/jsx.vim.git
-[submodule ".vim/bundle/vim-elixir"]
-	path = .vim/bundle/vim-elixir
-	url = git://github.com/elixir-lang/vim-elixir.git
 [submodule ".vim/bundle/html5.vim"]
 	path = .vim/bundle/html5.vim
 	url = git://github.com/othree/html5.vim.git
-[submodule ".vim/bundle/vim-stylus"]
-	path = .vim/bundle/vim-stylus
-	url = git://github.com/wavded/vim-stylus.git
 [submodule ".vim/bundle/EnhCommentify.vim"]
 	path = .vim/bundle/EnhCommentify.vim
 	url = git://github.com/kamipo/EnhCommentify.vim.git
@@ -72,25 +72,16 @@
 	url = git://github.com/kien/ctrlp.vim.git
 [submodule "zsh/antigen"]
 	path = zsh/antigen
-	url = https://github.com/kamipo/antigen.git
+	url = git://github.com/zsh-users/antigen.git
 [submodule ".vim/bundle/vim-unbundle"]
 	path = .vim/bundle/vim-unbundle
 	url = git://github.com/sunaku/vim-unbundle.git
-[submodule ".vim/bundle/vim-scala"]
-	path = .vim/bundle/vim-scala
-	url = git://github.com/derekwyatt/vim-scala.git
 [submodule ".vim/bundle/vim-indent-guides"]
 	path = .vim/bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
 [submodule ".vim/bundle/clever-f.vim"]
 	path = .vim/bundle/clever-f.vim
 	url = git://github.com/rhysd/clever-f.vim.git
-[submodule ".vim/bundle/vim-hybrid"]
-	path = .vim/bundle/vim-hybrid
-	url = git://github.com/w0ng/vim-hybrid.git
 [submodule ".vim/bundle/jellybeans.vim"]
 	path = .vim/bundle/jellybeans.vim
 	url = git://github.com/nanotech/jellybeans.vim.git
-[submodule ".vim/bundle/vim-golang"]
-	path = .vim/bundle/vim-golang
-	url = git://github.com/jnwhiteh/vim-golang.git
