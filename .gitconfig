@@ -10,26 +10,22 @@
 	quotepath = false
 	precomposeunicode = true
 	excludesfile = ~/.gitignore
+[push]
+	default = upstream
+[diff]
+	algorithm = patience
 [alias]
+	s = status --short --branch
 	st = status
 	ci = commit
 	co = checkout
 	br = branch
 	di = diff
+	wd = diff --word-diff
 	pu = pull
 	pr = pull --rebase
 	tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
 	tree = log --graph --pretty=oneline --abbrev-commit --decorate
-[hooks]
-	mailinglist = kamipo+ml@gmail.com
-	announcelist = kamipo+al@gmail.com
-	envelopesender = gitnotify@kamipo.net
-	emailprefix = [gitnotify]
-	showrev = "git show -C %s; echo"
-[push]
-	default = upstream
-[browse-remote "github.com"]
-	top = https://{host}/{path}
-	ref = https://{host}/{path}/tree/{short_ref}
-	rev = https://{host}/{path}/commit/{commit}
-	file = "https://{host}/{path}/blob/{short_rev}/{file}{line && \"#L%d\" % line}"
+[url "git@github.com:"]
+	pushInsteadOf = "git://github.com/"
+	pushInsteadOf = "https://github.com/"
