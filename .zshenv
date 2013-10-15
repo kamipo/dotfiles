@@ -33,7 +33,6 @@ if [ "Darwin" = "$(uname)" ]; then
 
   export_path_if_exists "$(brew --prefix coreutils)/libexec/gnubin"
 
-  export CFLAGS=-Wno-error=shorten-64-to-32
   export RUBY_CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline` --with-openssl-dir=`brew --prefix openssl`"
 fi
 
