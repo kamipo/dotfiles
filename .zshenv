@@ -13,6 +13,7 @@ antigen-bundle bundler
 export_path_if_exists "$HOME/.plenv/bin" && eval "$(plenv init -)"
 export_path_if_exists "$HOME/mysql-build/bin"
 export_path_if_exists /usr/local/share/git-core/contrib/workdir
+export_path_if_exists /usr/local/share/git-core/contrib/diff-highlight
 export_path_if_exists /usr/local/share/npm/bin && {
   export NODE_PATH="/usr/local/share/npm/lib/node_modules"
 }

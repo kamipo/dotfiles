@@ -6,6 +6,10 @@
 	status = auto
 	branch = auto
 	interactive = auto
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
 [core]
 	quotepath = false
 	precomposeunicode = true
