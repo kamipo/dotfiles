@@ -37,6 +37,7 @@ if [ "Darwin" = "$(uname)" ]; then
 fi
 
 export EDITOR='vim'
-export PAGER='less -R'
+export PAGER='less'
+export LESS='-R -g -j10 --no-init --quit-if-one-screen'
 
 disable r
