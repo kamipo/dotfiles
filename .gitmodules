@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/xslate-vim"]
 	path = .vim/bundle/xslate-vim
 	url = git@github.com:motemen/xslate-vim.git
+[submodule ".vim/bundle/wildfire.vim"]
+	path = .vim/bundle/wildfire.vim
+	url = git@github.com:gcmt/wildfire.vim.git
