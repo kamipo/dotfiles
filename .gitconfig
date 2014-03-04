@@ -15,7 +15,7 @@
 	precomposeunicode = true
 	excludesfile = ~/.gitignore
 [push]
-	default = upstream
+	default = simple
 [diff]
 	algorithm = patience
 [alias]
@@ -33,3 +33,5 @@
 [url "git@github.com:"]
 	pushInsteadOf = "git://github.com/"
 	pushInsteadOf = "https://github.com/"
+[credential]
+	helper = cache
