@@ -10,6 +10,8 @@ source_if_exists ~/dotfiles/zsh/antigen/antigen.zsh
 antigen-bundle rbenv
 antigen-bundle bundler
 
+export GOPATH=$HOME
+export_path_if_exists "$GOPATH/bin"
 export_path_if_exists "$HOME/.plenv/bin" && eval "$(plenv init -)"
 export_path_if_exists "$HOME/mysql-build/bin"
 export_path_if_exists /usr/local/share/git-core/contrib/workdir

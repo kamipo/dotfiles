@@ -35,3 +35,5 @@
 	pushInsteadOf = "https://github.com/"
 [credential]
 	helper = cache
+[ghq]
+	root = ~/src
