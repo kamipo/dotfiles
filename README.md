@@ -8,14 +8,17 @@ Install Xcode 4.x and [GCC](https://github.com/kennethreitz/osx-gcc-installer)
 
 ```
 sudo chown -R `whoami` /usr/local
-ruby -e "$(curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew doctor
 sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 xcode-select -print-path
 
 ./brewfile.sh
-./setup.sh
+./dotsetup.sh
+
+sudo vi /etc/shells
+chpass -s /usr/local/bin/zsh
 ```
 
 ### rbenv
