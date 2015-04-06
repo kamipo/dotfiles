@@ -1,4 +1,6 @@
-#!/bin/bash -x
+#!/bin/bash
+
+set -eux
 
 # Make sure using latest Homebrew
 brew update
@@ -9,6 +11,7 @@ brew upgrade
 # Add Repository
 brew tap homebrew/versions
 brew tap homebrew/binary
+brew tap homebrew/dupes
 brew tap phinze/homebrew-cask
 brew tap marcqualie/nginx
 
@@ -29,6 +32,7 @@ brew install automake
 brew install autossh
 brew install cmake
 brew install coreutils
+brew install ec2-api-tools
 brew install findutils
 #brew install gcc48
 brew install gnu-sed
@@ -39,10 +43,10 @@ brew install go
 brew install htop-osx
 brew install jq
 brew install keychain
-brew install node
 brew install openssl
 brew install pkg-config
 brew install proctools
+brew install pssh
 brew install pstree
 brew install readline
 brew install sqlite
@@ -68,9 +72,8 @@ brew install packer
 brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
-brew cask install kobito
 brew cask install limechat
-brew cask install skype
+brew cask install slack
 brew cask install vagrant
 brew cask install virtualbox
 
