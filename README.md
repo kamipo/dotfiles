@@ -16,6 +16,7 @@ xcode-select -print-path
 
 ./brewfile.sh
 ./dotsetup.sh
+./xxenv_setup.sh
 
 sudo vi /etc/shells
 chpass -s /usr/local/bin/zsh
