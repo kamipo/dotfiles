@@ -4,9 +4,9 @@
 
 ### Homebrew
 
-Install Xcode 4.x and [GCC](https://github.com/kennethreitz/osx-gcc-installer)
-
 ```
+xcode-select --install
+
 sudo chown -R `whoami` /usr/local
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
