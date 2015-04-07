@@ -32,7 +32,6 @@ brew install automake
 brew install autossh
 brew install cmake
 brew install coreutils
-brew install ec2-api-tools
 brew install findutils
 #brew install gcc48
 brew install gnu-sed
@@ -72,10 +71,14 @@ brew install packer
 brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
+brew cask install google-japanese-ime
+brew cask install java
 brew cask install limechat
-brew cask install slack
 brew cask install vagrant
 brew cask install virtualbox
+
+# Required java
+brew install ec2-api-tools
 
 # Remove outdated versions
 brew cleanup
