@@ -31,9 +31,6 @@
 [submodule ".vim/ftbundle/slim/vim-slim"]
 	path = .vim/ftbundle/slim/vim-slim
 	url = git://github.com/slim-template/vim-slim.git
-[submodule ".vim/bundle/vim-haml"]
-	path = .vim/bundle/vim-haml
-	url = git://github.com/tpope/vim-haml.git
 [submodule ".vim/bundle/vim-rails"]
 	path = .vim/bundle/vim-rails
 	url = git://github.com/tpope/vim-rails.git
@@ -91,3 +88,9 @@
 [submodule ".vim/bundle/wildfire.vim"]
 	path = .vim/bundle/wildfire.vim
 	url = git@github.com:gcmt/wildfire.vim.git
+[submodule ".vim/ftbundle/json/vim-json"]
+	path = .vim/ftbundle/json/vim-json
+	url = git@github.com:elzr/vim-json.git
+[submodule ".vim/ftbundle/haml/vim-haml"]
+	path = .vim/ftbundle/haml/vim-haml
+	url = git@github.com:tpope/vim-haml.git
