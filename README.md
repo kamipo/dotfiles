@@ -6,13 +6,16 @@
 
 ```
 xcode-select --install
+sudo xcodebuild -license
 
+sudo mkdir /usr/local
 sudo chown -R `whoami` /usr/local
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew doctor
-sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
-xcode-select -print-path
+
+git clone https://github.com/kamipo/dotfiles.git
+cd dotfiles
 
 ./brewfile.sh
 ./dotsetup.sh
