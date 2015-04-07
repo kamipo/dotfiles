@@ -3,6 +3,6 @@ if type keychain > /dev/null; then
   source ~/.keychain/$HOST-sh
 fi
 
-if [ -d ~/.autossh ]; then
-  for script (~/.autossh/*) source "$script"
+if [ -d ~/.local ]; then
+  for script (~/.local/*) source "$script"
 fi
