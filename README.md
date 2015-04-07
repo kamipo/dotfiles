@@ -22,6 +22,13 @@ sudo vi /etc/shells
 chpass -s /usr/local/bin/zsh
 ```
 
+### ghq
+
+```
+go get github.com/motemen/ghq
+ghq get kamipo/mysql-build
+```
+
 ### rbenv
 
 ```
