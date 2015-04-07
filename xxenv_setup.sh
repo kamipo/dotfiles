@@ -3,13 +3,13 @@
 set -eux
 
 if [ ! -d ~/.rbenv ]; then
-  git clone git@github.com:sstephenson/rbenv.git ~/.rbenv
+  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   ln -nfs $PWD/default-gems ~/.rbenv/default-gems
   mkdir -p ~/.rbenv/plugins
   cd ~/.rbenv/plugins
-  git clone git@github.com:sstephenson/ruby-build.git
-  git clone git@github.com:sstephenson/rbenv-default-gems.git
-  git clone git@github.com:rkh/rbenv-update.git
+  git clone https://github.com/sstephenson/ruby-build.git
+  git clone https://github.com/sstephenson/rbenv-default-gems.git
+  git clone https://github.com/rkh/rbenv-update.git
 
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
@@ -21,10 +21,10 @@ if [ ! -d ~/.rbenv ]; then
 fi
 
 if [ ! -d ~/.plenv ]; then
-  git clone git@github.com:tokuhirom/plenv.git ~/.plenv
+  git clone https://github.com/tokuhirom/plenv.git ~/.plenv
   mkdir -p ~/.plenv/plugins
   cd ~/.plenv/plugins
-  git clone git@github.com:tokuhirom/Perl-Build.git perl-build
+  git clone https://github.com/tokuhirom/Perl-Build.git perl-build
 
   export PATH="$HOME/.plenv/bin:$PATH"
   eval "$(plenv init -)"
