@@ -30,6 +30,7 @@ brew install aspell
 brew install autoconf
 brew install automake
 brew install autossh
+brew install awscli
 brew install cmake
 brew install coreutils
 brew install findutils
@@ -37,12 +38,15 @@ brew install findutils
 brew install gnu-sed
 brew install gnu-tar
 brew install go
+brew install gpg
 #brew install groonga
 #brew install groonga-normalizer-mysql
 brew install htop-osx
 brew install jq
 brew install keychain
+brew install libffi
 brew install openssl
+brew install parallel
 brew install pkg-config
 brew install proctools
 brew install pssh
