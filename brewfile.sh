@@ -41,6 +41,7 @@ brew install go
 brew install gpg
 #brew install groonga
 #brew install groonga-normalizer-mysql
+brew install heroku-toolbelt
 brew install htop-osx
 brew install jq
 brew install keychain
