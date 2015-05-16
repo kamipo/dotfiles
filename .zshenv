@@ -39,6 +39,7 @@ if [ "Darwin" = "$(uname)" ]; then
   export RUBY_CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline` --with-openssl-dir=`brew --prefix openssl`"
 fi
 
+export LANG='ja_JP.UTF-8'
 export EDITOR='vim'
 export PAGER='less'
 export LESS='-R -g -j10 --no-init --quit-if-one-screen'
