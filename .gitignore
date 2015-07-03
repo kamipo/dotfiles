@@ -3,4 +3,5 @@
 doc/tags
 doc/tags-ja
 .netrwhist
+/.bundle
 /vendor/bundle
