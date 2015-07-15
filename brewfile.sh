@@ -48,6 +48,7 @@ brew install keychain
 brew install libffi
 brew install openssl
 brew install parallel
+brew install percona-toolkit
 brew install pkg-config
 brew install proctools
 brew install pssh
