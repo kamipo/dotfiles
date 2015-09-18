@@ -33,6 +33,7 @@ brew install autossh
 brew install awscli
 brew install cmake
 brew install coreutils
+brew install elixir
 brew install findutils
 #brew install gcc48
 brew install gnu-sed
