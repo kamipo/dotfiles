@@ -106,6 +106,6 @@ let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
 
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['c', 'cpp'] }
+let g:syntastic_mode_map = { 'mode': 'passive',
+                           \ 'active_filetypes': ['perl', 'php', 'ruby', 'javascript'],
+                           \ 'passive_filetypes': [] }
