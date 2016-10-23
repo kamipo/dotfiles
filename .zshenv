@@ -34,9 +34,9 @@ if [ "Darwin" = "$(uname)" ]; then
     export_path_if_exists "$JAVA_HOME/bin"
   fi
 
-  export_path_if_exists "$(brew --prefix coreutils)/libexec/gnubin"
+  export_path_if_exists "/usr/local/opt/coreutils/libexec/gnubin"
 
-  export RUBY_CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline` --with-openssl-dir=`brew --prefix openssl`"
+  export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-openssl-dir=/usr/local/opt/openssl"
 fi
 
 export LANG='ja_JP.UTF-8'
