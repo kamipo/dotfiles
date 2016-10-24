@@ -16,6 +16,10 @@ if is-at-least 4.3.11; then
   zstyle ":completion:*" recent-dirs-insert always
 fi
 
+function source_if_exists { [[ -f "$1" ]] && source "$1" }
+
+source_if_exists ~/dotfiles/zsh/antigen/antigen.zsh
+
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zaw
 

@@ -3,15 +3,10 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 function export_path_if_exists { [[ -d "$1" ]] && export PATH="$1:$PATH" }
-function source_if_exists { [[ -f "$1" ]] && source "$1" }
-
-source_if_exists ~/dotfiles/zsh/antigen/antigen.zsh
-
-antigen-bundle rbenv
-antigen-bundle bundler
 
 export GOPATH=$HOME
 export_path_if_exists "$GOPATH/bin"
+export_path_if_exists "$HOME/.rbenv/bin" && eval "$(rbenv init --no-rehash - zsh)"
 export_path_if_exists "$HOME/.plenv/bin" && eval "$(plenv init -)"
 export_path_if_exists "$HOME/mysql-build/bin"
 export_path_if_exists /usr/local/share/git-core/contrib/workdir
