@@ -19,6 +19,10 @@ if [ -d /usr/local/lib/pkgconfig ]; then
   export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 fi
 
+if type bundle > /dev/null; then
+  alias be='bundle exec'
+fi
+
 if type hub > /dev/null; then
   eval "$(hub alias -s zsh)"
 fi
