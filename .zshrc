@@ -256,7 +256,7 @@ if is-at-least 4.3.11; then
         fi
 
         local stash
-        stash=$(cd $(git rev-parse --git-dir); wc -l logs/refs/stash | awk '{print $1}')
+        stash=$(wc -l "$(git rev-parse --git-dir)/logs/refs/stash" | awk '{print $1}')
         if [[ "${stash}" -gt 0 ]]; then
             # misc (%m) に追加
             hook_com[misc]+=":S${stash}"
