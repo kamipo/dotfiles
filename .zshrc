@@ -156,9 +156,7 @@ if is-at-least 4.3.11; then
     # 各関数が最大3回呼び出される。
     zstyle ':vcs_info:git+set-message:*' hooks \
                                             git-hook-begin \
-                                            git-untracked \
                                             git-push-status \
-                                            git-nomerge-branch \
                                             git-stash-count
 
     # フックの最初の関数
@@ -172,25 +170,6 @@ if is-at-least 4.3.11; then
         fi
 
         return 0
-    }
-
-    # untracked フィアル表示
-    #
-    # untracked ファイル(バージョン管理されていないファイル)がある場合は
-    # unstaged (%u) に ? を表示
-    function +vi-git-untracked() {
-        # zstyle formats, actionformats の2番目のメッセージのみ対象にする
-        if [[ "$1" != "1" ]]; then
-            return 0
-        fi
-
-        if command git status --porcelain 2> /dev/null \
-            | awk '{print $1}' \
-            | command grep -F '??' > /dev/null 2>&1 ; then
-
-            # unstaged (%u) に追加
-            hook_com[unstaged]+='?'
-        fi
     }
 
     # push していないコミットの件数表示
@@ -219,32 +198,6 @@ if is-at-least 4.3.11; then
             hook_com[misc]+="(p${ahead})"
         fi
     }
-
-    # マージしていない件数表示
-    #
-    # master 以外のブランチにいる場合に、
-    # 現在のブランチ上でまだ master にマージしていないコミットの件数を
-    # (mN) という形式で misc (%m) に表示
-    function +vi-git-nomerge-branch() {
-        # zstyle formats, actionformats の2番目のメッセージのみ対象にする
-        if [[ "$1" != "1" ]]; then
-            return 0
-        fi
-
-        if [[ "${hook_com[branch]}" == "master" ]]; then
-            # master ブランチの場合は何もしない
-            return 0
-        fi
-
-        local nomerged
-        nomerged=$(command git rev-list master..${hook_com[branch]} 2>/dev/null | wc -l | tr -d ' ')
-
-        if [[ "$nomerged" -gt 0 ]] ; then
-            # misc (%m) に追加
-            hook_com[misc]+="(m${nomerged})"
-        fi
-    }
-
 
     # stash 件数表示
     #
