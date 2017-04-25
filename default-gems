@@ -1,6 +1,5 @@
 allocation_tracer
 benchmark-ips
 bundler
-ec2ssh
 hotdog
 td
