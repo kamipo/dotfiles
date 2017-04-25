@@ -54,6 +54,7 @@ brew install pkg-config
 brew install proctools
 brew install pssh
 brew install pstree
+brew install qt@5.5
 brew install readline
 brew install sqlite
 brew install ssh-copy-id
