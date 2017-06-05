@@ -56,6 +56,7 @@ brew install pssh
 brew install pstree
 brew install qt@5.5
 brew install readline
+brew install socat
 brew install sqlite
 brew install ssh-copy-id
 brew install tmux
