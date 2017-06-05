@@ -72,17 +72,12 @@ brew install ngrep
 brew install tcpflow
 brew install wireshark
 
-brew install docker
-brew install boot2docker
-brew install packer
-
 # .dmg
 brew cask install dropbox
 brew cask install firefox
 brew cask install google-chrome
 brew cask install google-japanese-ime
 brew cask install java
-brew cask install limechat
 brew cask install vagrant
 brew cask install virtualbox
 
