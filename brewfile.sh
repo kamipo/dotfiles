@@ -35,13 +35,11 @@ brew install cmake
 brew install coreutils
 brew install elixir
 brew install findutils
-#brew install gcc48
+brew install geoipupdate
 brew install gnu-sed
 brew install gnu-tar
 brew install go
 brew install gpg
-#brew install groonga
-#brew install groonga-normalizer-mysql
 brew install heroku-toolbelt
 brew install htop-osx
 brew install jq
