@@ -34,6 +34,7 @@ brew install awscli
 brew install cmake
 brew install coreutils
 brew install elixir
+brew install ffmpeg
 brew install findutils
 brew install geoipupdate
 brew install gnu-sed
@@ -45,6 +46,7 @@ brew install htop-osx
 brew install jq
 brew install keychain
 brew install libffi
+brew install mupdf-tools
 brew install openssl
 brew install parallel
 brew install percona-toolkit
