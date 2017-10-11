@@ -15,8 +15,8 @@ if [ ! -d ~/.rbenv ]; then
   eval "$(rbenv init -)"
 
   # ruby required libssl-dev libreadline6-dev libncurses5-dev libsqlite3-dev
-  rbenv install 2.2.1
-  rbenv global  2.2.1
+  rbenv install 2.4.2 --keep
+  rbenv global  2.4.2
   rbenv rehash
 fi
 
@@ -29,8 +29,8 @@ if [ ! -d ~/.plenv ]; then
   export PATH="$HOME/.plenv/bin:$PATH"
   eval "$(plenv init -)"
 
-  plenv install 5.21.9 -DDEBUGGING=-g --build-dir=~/.plenv/build
-  plenv global  5.21.9
+  plenv install 5.26.1 -DDEBUGGING=-g --build-dir=~/.plenv/build
+  plenv global  5.26.1
   plenv install-cpanm
   plenv rehash
 fi
