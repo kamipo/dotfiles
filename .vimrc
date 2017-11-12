@@ -106,6 +106,8 @@ let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
 
+let g:go_version_warning = 0
+
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['perl', 'php', 'ruby', 'javascript'],
                            \ 'passive_filetypes': [] }
