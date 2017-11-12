@@ -28,9 +28,6 @@
 [submodule ".vim/ftbundle/slim/vim-slim"]
 	path = .vim/ftbundle/slim/vim-slim
 	url = https://github.com/slim-template/vim-slim.git
-[submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails
-	url = https://github.com/tpope/vim-rails.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
