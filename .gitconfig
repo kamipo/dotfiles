@@ -14,6 +14,7 @@
 	quotepath = false
 	precomposeunicode = true
 	excludesfile = ~/.gitignore
+	commentchar = ";"
 [push]
 	default = simple
 [diff]
@@ -37,3 +38,5 @@
 	helper = cache
 [ghq]
 	root = ~/src
+[submodule]
+	recurse = true
