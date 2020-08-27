@@ -17,8 +17,6 @@
 	commentchar = ";"
 [push]
 	default = simple
-[diff]
-	algorithm = patience
 [alias]
 	s = status --short --branch
 	st = status
