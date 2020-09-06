@@ -63,8 +63,8 @@ inoremap <C-t> <C-v><Tab>
 inoremap <C-c> <ESC>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
-"inoremap <C-h> <Left>
-"inoremap <C-l> <Right>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
 noremap <Space>h ^
 noremap <Space>l $
