@@ -182,14 +182,14 @@ if is-at-least 4.3.11; then
             return 0
         fi
 
-        if [[ "${hook_com[branch]}" != "master" ]]; then
-            # master ブランチでない場合は何もしない
+        if [[ "${hook_com[branch]}" != "main" ]]; then
+            # main ブランチでない場合は何もしない
             return 0
         fi
 
         # push していないコミット数を取得する
         local ahead
-        ahead=$(command git rev-list origin/master..master 2>/dev/null \
+        ahead=$(command git rev-list origin/main..main 2>/dev/null \
             | wc -l \
             | tr -d ' ')
 
