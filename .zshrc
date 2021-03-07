@@ -7,7 +7,6 @@ colors
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 
-## must be loaded before zaw-cdr
 if is-at-least 4.3.11; then
   autoload -U chpwd_recent_dirs cdr
   add-zsh-hook chpwd chpwd_recent_dirs
@@ -21,14 +20,8 @@ function source_if_exists { [[ -f "$1" ]] && source "$1" }
 source_if_exists ~/dotfiles/zsh/antigen/antigen.zsh
 
 antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zaw
 
 bindkey -e
-
-## zaw
-bindkey -M filterselect '^m' accept-search
-bindkey '^o' zaw-history
-bindkey '^x^o' zaw-cdr
 
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
