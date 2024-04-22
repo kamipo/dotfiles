@@ -1,5 +1,7 @@
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$(brew --prefix git)/share/git-core/contrib/diff-highlight:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 function export_path_if_exists { [[ -d "$1" ]] && export PATH="$1:$PATH" }
