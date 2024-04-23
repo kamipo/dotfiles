@@ -1,7 +1,6 @@
+export HOMEBREW_ROOT="/opt/homebrew"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$(brew --prefix git)/share/git-core/contrib/diff-highlight:$PATH"
+export PATH="$HOMEBREW_ROOT/bin:$HOMEBREW_ROOT/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 function export_path_if_exists { [[ -d "$1" ]] && export PATH="$1:$PATH" }
@@ -9,16 +8,16 @@ function export_path_if_exists { [[ -d "$1" ]] && export PATH="$1:$PATH" }
 export GOPATH=$HOME
 export_path_if_exists "$GOPATH/bin"
 export_path_if_exists "$HOME/.rbenv/bin" && eval "$(rbenv init --no-rehash - zsh)"
-export_path_if_exists "$HOME/.plenv/bin" && eval "$(plenv init -)"
+export_path_if_exists "$HOME/.plenv/bin" && eval "$(plenv init - zsh)"
 export_path_if_exists "$HOME/mysql-build/bin"
-export_path_if_exists /usr/local/share/git-core/contrib/workdir
-export_path_if_exists /usr/local/share/git-core/contrib/diff-highlight
-export_path_if_exists /usr/local/share/npm/bin && {
-  export NODE_PATH="/usr/local/share/npm/lib/node_modules"
+export_path_if_exists $HOMEBREW_ROOT/share/git-core/contrib/workdir
+export_path_if_exists $HOMEBREW_ROOT/share/git-core/contrib/diff-highlight
+export_path_if_exists $HOMEBREW_ROOT/share/npm/bin && {
+  export NODE_PATH="$HOMEBREW_ROOT/share/npm/lib/node_modules"
 }
 
-if [ -d /usr/local/lib/pkgconfig ]; then
-  export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+if [ -d $HOMEBREW_ROOT/lib/pkgconfig ]; then
+  export PKG_CONFIG_PATH="$HOMEBREW_ROOT/lib/pkgconfig"
 fi
 
 if type bundle > /dev/null; then
@@ -26,7 +25,7 @@ if type bundle > /dev/null; then
 fi
 
 if type hub > /dev/null; then
-  eval "$(hub alias -s zsh)"
+  alias git=hub
 fi
 
 if [ "Darwin" = "$(uname)" ]; then
@@ -35,9 +34,9 @@ if [ "Darwin" = "$(uname)" ]; then
     export_path_if_exists "$JAVA_HOME/bin"
   fi
 
-  export_path_if_exists "/usr/local/opt/coreutils/libexec/gnubin"
+  export_path_if_exists "$HOMEBREW_ROOT/opt/coreutils/libexec/gnubin"
 
-  export RUBY_CONFIGURE_OPTS="--with-readline-dir=/usr/local/opt/readline --with-openssl-dir=/usr/local/opt/openssl"
+  export RUBY_CONFIGURE_OPTS="--with-readline-dir=$HOMEBREW_ROOT/opt/readline --with-openssl-dir=$HOMEBREW_ROOT/opt/openssl"
 fi
 
 export LANG='ja_JP.UTF-8'
