@@ -5,3 +5,4 @@ doc/tags-ja
 .netrwhist
 /.bundle
 /vendor/bundle
+/Brewfile.lock.json
