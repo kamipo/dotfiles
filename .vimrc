@@ -15,8 +15,6 @@ set fileencoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,iso-2022-jp,cp932
 set fileformats=unix,dos,mac
 
-" ターミナルkamipoプロファイルの詳細で
-" DeleteキーでControl＋Hを送信のチェックを外す！
 set backspace=indent,eol,start
 
 set ambiwidth=double
