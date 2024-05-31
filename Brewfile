@@ -15,4 +15,7 @@ brew "readline"
 brew "libyaml"
 brew "rust"
 
+brew "zstd"
+
 brew "protobuf"
+brew "grpcurl"
