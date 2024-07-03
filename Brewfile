@@ -19,3 +19,8 @@ brew "zstd"
 
 brew "protobuf"
 brew "grpcurl"
+
+brew "node"
+brew "jq"
+brew "docker"
+brew "docker-compose"
