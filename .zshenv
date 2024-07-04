@@ -41,6 +41,7 @@ if [ "Darwin" = "$(uname)" ]; then
   export_path_if_exists "$HOMEBREW_ROOT/opt/coreutils/libexec/gnubin"
 
   export RUBY_CONFIGURE_OPTS="--with-readline-dir=$HOMEBREW_ROOT/opt/readline --with-openssl-dir=$HOMEBREW_ROOT/opt/openssl"
+  export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix zstd)/lib/"
 fi
 
 export LANG='ja_JP.UTF-8'
