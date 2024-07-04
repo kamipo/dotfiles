@@ -7,6 +7,7 @@ brew "tig"
 brew "vim"
 brew "zsh"
 brew "screen"
+brew "tree"
 
 # for building ruby
 brew "pkg-config"
