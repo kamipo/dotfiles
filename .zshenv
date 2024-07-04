@@ -1,3 +1,7 @@
+if [ -x /usr/libexec/path_helper ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
+
 export HOMEBREW_ROOT="/opt/homebrew"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$HOMEBREW_ROOT/bin:$HOMEBREW_ROOT/sbin:$PATH"
