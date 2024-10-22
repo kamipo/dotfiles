@@ -7,6 +7,8 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$HOMEBREW_ROOT/bin:$HOMEBREW_ROOT/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
+eval "$(fnm env --use-on-cd --resolve-engines)"
+
 function export_path_if_exists { [[ -d "$1" ]] && export PATH="$1:$PATH" }
 
 export GOPATH=$HOME

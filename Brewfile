@@ -22,6 +22,11 @@ brew "protobuf"
 brew "grpcurl"
 
 brew "node"
+brew "fnm"
 brew "jq"
 brew "docker"
 brew "docker-compose"
+
+brew "postgresql"
+
+brew "1password-cli"

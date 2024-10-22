@@ -249,3 +249,9 @@ if [ $TERM = "screen" ]; then
     echo -ne "\ek${1%% *}\e\\"
   }
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kamipo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kamipo/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kamipo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kamipo/google-cloud-sdk/completion.zsh.inc'; fi
