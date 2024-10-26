@@ -5,6 +5,7 @@ fi
 export HOMEBREW_ROOT="/opt/homebrew"
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$HOMEBREW_ROOT/bin:$HOMEBREW_ROOT/sbin:$PATH"
+export PATH="$HOMEBREW_ROOT/opt/postgresql@17/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 eval "$(fnm env --use-on-cd --resolve-engines)"
