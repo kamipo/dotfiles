@@ -17,6 +17,7 @@
 	commentchar = ";"
 [push]
 	default = simple
+	autoSetupRemote = true
 [alias]
 	s = status --short --branch
 	st = status
