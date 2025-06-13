@@ -9,6 +9,8 @@ brew "vim"
 brew "zsh"
 brew "screen"
 brew "tree"
+brew "pstree"
+brew "watch"
 
 # for building ruby
 brew "pkg-config"
@@ -22,9 +24,12 @@ brew "zstd"
 brew "protobuf"
 brew "grpcurl"
 
+brew "go"
 brew "node"
 brew "fnm"
+brew "uv"
 brew "jq"
+brew "yq"
 brew "docker"
 brew "docker-compose"
 
