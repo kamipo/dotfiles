@@ -8,7 +8,9 @@ export PATH="$HOMEBREW_ROOT/bin:$HOMEBREW_ROOT/sbin:$PATH"
 export PATH="$HOMEBREW_ROOT/opt/postgresql@17/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
-eval "$(fnm env --use-on-cd --resolve-engines)"
+if type fnm > /dev/null; then
+  eval "$(fnm env --use-on-cd --resolve-engines)"
+fi
 
 function export_path_if_exists { [[ -d "$1" ]] && export PATH="$1:$PATH" }
 
