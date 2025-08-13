@@ -1,6 +1,7 @@
 [user]
 	name = Ryuta Kamizono
 	email = kamipo@gmail.com
+	signingkey = FD392ED725AD244B
 [color]
 	diff = auto
 	status = auto
@@ -39,3 +40,5 @@
 	root = ~/src
 [submodule]
 	recurse = true
+[commit]
+	gpgsign = true
