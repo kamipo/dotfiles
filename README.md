@@ -11,7 +11,7 @@ xcode-select --install
 
 brew doctor
 
-git clone https://github.com/kamipo/dotfiles.git
+git clone git@github.com:kamipo/dotfiles.git
 cd dotfiles
 
 brew bundle
