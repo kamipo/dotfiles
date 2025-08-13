@@ -33,5 +33,3 @@ brew "docker"
 brew "docker-compose"
 
 brew "postgresql"
-
-brew "1password-cli"
