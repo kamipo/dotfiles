@@ -2,7 +2,6 @@
 
 brew "git"
 brew "ghq"
-brew "hub"
 brew "gh"
 brew "tig"
 brew "vim"

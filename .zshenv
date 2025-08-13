@@ -31,10 +31,6 @@ if type bundle > /dev/null; then
   alias be='bundle exec'
 fi
 
-if type hub > /dev/null; then
-  alias git=hub
-fi
-
 if [ "Darwin" = "$(uname)" ]; then
   if [ -x /usr/libexec/java_home ]; then
     export JAVA_HOME="$(/usr/libexec/java_home)"
