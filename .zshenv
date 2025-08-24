@@ -43,6 +43,7 @@ if [ "Darwin" = "$(uname)" ]; then
 
   export RUBY_CONFIGURE_OPTS="--with-readline-dir=$HOMEBREW_ROOT/opt/readline --with-openssl-dir=$HOMEBREW_ROOT/opt/openssl"
   export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix zstd)/lib/"
+  export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 fi
 
 export LANG='ja_JP.UTF-8'
