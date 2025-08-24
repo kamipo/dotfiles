@@ -93,14 +93,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
 au FileType sql  set timeoutlen=0
 au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType zsh  set tabstop=2 softtabstop=2 shiftwidth=2
-au FileType cpp  set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType yaml set tabstop=2 softtabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.cgi  set ft=perl
-au BufNewFile,BufRead *.psgi set ft=perl
-
-map ,pt <Esc>:%! perltidy -se<CR>
-map ,ptv <Esc>:'<,'>! perltidy -se<CR>
+au BufNewFile,BufRead *.schema set ft=ruby
 
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
