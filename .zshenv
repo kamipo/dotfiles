@@ -8,6 +8,8 @@ export PATH="$HOMEBREW_ROOT/bin:$HOMEBREW_ROOT/sbin:$PATH"
 export PATH="$HOMEBREW_ROOT/opt/postgresql@17/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
+eval "$(mise activate zsh)"
+
 if type fnm > /dev/null; then
   eval "$(fnm env --use-on-cd --resolve-engines)"
 fi
@@ -31,6 +33,7 @@ fi
 
 if type bundle > /dev/null; then
   alias be='bundle exec'
+  export BUNDLE_AUTO_INSTALL=true
 fi
 
 if [ "Darwin" = "$(uname)" ]; then
@@ -50,5 +53,7 @@ export LANG='ja_JP.UTF-8'
 export EDITOR='vim'
 export PAGER='less'
 export LESS='-R -g -j10 --no-init --quit-if-one-screen'
+
+export COMPOSE_PROFILES=middleware,test-middleware
 
 disable r
