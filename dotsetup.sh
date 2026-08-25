@@ -5,7 +5,7 @@ set -eux
 git submodule init
 git submodule update
 
-for dotfile in .editrc .gdbinit .gemrc .gitconfig .gitignore .inputrc .railsrc .screenrc .tigrc .toprc .vim .vimrc .zshenv .zshrc
+for dotfile in .gemrc .gitconfig .gitignore .screenrc .tigrc .vim .vimrc .zshenv .zshrc
 do
   if [ -e ~/$dotfile ]; then
     rm -fr ~/$dotfile
