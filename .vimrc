@@ -102,6 +102,7 @@ nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
 
 let g:ale_linters_explicit = 1
+let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_linters = {
 \   'ruby':       ['rubocop'],
 \   'javascript': ['eslint'],

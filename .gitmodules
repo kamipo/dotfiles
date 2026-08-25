@@ -4,9 +4,6 @@
 [submodule ".vim/ftbundle/ruby/vim-ruby"]
 	path = .vim/ftbundle/ruby/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/ftbundle/markdown/vim-markdown"]
-	path = .vim/ftbundle/markdown/vim-markdown
-	url = https://github.com/tpope/vim-markdown.git
 [submodule ".vim/ftbundle/slim/vim-slim"]
 	path = .vim/ftbundle/slim/vim-slim
 	url = https://github.com/slim-template/vim-slim.git
@@ -22,9 +19,6 @@
 [submodule ".vim/bundle/EnhCommentify.vim"]
 	path = .vim/bundle/EnhCommentify.vim
 	url = https://github.com/kamipo/EnhCommentify.vim.git
-[submodule ".vim/bundle/ack.vim"]
-	path = .vim/bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
