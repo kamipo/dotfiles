@@ -15,12 +15,6 @@ if is-at-least 4.3.11; then
   zstyle ":completion:*" recent-dirs-insert always
 fi
 
-function source_if_exists { [[ -f "$1" ]] && source "$1" }
-
-source_if_exists ~/dotfiles/zsh/antigen/antigen.zsh
-
-antigen-bundle zsh-users/zsh-syntax-highlighting
-
 bindkey -e
 
 autoload -U history-search-end
@@ -244,7 +238,7 @@ REPORTTIME=3
 ulimit -c unlimited
 ulimit -n 10240
 
-if [ $TERM = "screen" ]; then
+if [[ $TERM = "screen" ]]; then
   preexec () {
     echo -ne "\ek${1%% *}\e\\"
   }
