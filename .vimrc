@@ -101,8 +101,11 @@ let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 vmap <Leader>r <Plug>(quickrun)
 
-let g:go_version_warning = 0
-
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['perl', 'php', 'ruby', 'javascript'],
-                           \ 'passive_filetypes': [] }
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\   'ruby':       ['rubocop'],
+\   'javascript': ['eslint'],
+\ }
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
