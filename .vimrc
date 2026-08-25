@@ -1,6 +1,6 @@
 set nocompatible
 
-runtime bundle/vim-unbundle/unbundle.vim
+runtime bundle/vim-unbundle/plugin/unbundle.vim
 runtime macros/matchit.vim
 
 syntax on
