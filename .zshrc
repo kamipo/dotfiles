@@ -238,7 +238,7 @@ REPORTTIME=3
 ulimit -c unlimited
 ulimit -n 10240
 
-if [ $TERM = "screen" ]; then
+if [[ $TERM = "screen" ]]; then
   preexec () {
     echo -ne "\ek${1%% *}\e\\"
   }
