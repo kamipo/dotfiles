@@ -115,6 +115,18 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'
 
+# git 同梱の zsh 補完 (_git) は bash 補完スクリプトの場所を探すために
+# 毎回 pkg-config を起動しており、初回の `git <TAB>` に 0.2〜0.3 秒かかる。
+# 実際に使われるパスを直接指定して pkg-config の起動を省く。
+for _f in ${HOMEBREW_ROOT:-/opt/homebrew}/share/zsh/site-functions/git-completion.bash \
+          /usr/share/bash-completion/completions/git; do
+  if [ -f $_f ]; then
+    zstyle ':completion:*:*:git:*' script $_f
+    break
+  fi
+done
+unset _f
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' max-exports 3
 zstyle ':vcs_info:*' enable git svn hg bzr
