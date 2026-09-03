@@ -43,18 +43,3 @@ rbenv install 3.2.3 --keep
 rbenv global  3.2.3
 rbenv rehash
 ```
-
-### plenv
-
-```
-git clone https://github.com/tokuhirom/plenv.git ~/.plenv
-git clone https://github.com/tokuhirom/Perl-Build.git ~/.plenv/plugins/perl-build
-
-export PATH="$HOME/.plenv/bin:$PATH"
-eval "$(plenv init - zsh)"
-
-plenv install 5.38.2 -DDEBUGGING=-g --build-dir=~/.plenv/build
-plenv global  5.38.2
-plenv install-cpanm
-plenv rehash
-```

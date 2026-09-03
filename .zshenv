@@ -19,7 +19,6 @@ function export_path_if_exists { [[ -d "$1" ]] && export PATH="$1:$PATH" }
 export GOPATH=$HOME
 export_path_if_exists "$GOPATH/bin"
 export_path_if_exists "$HOME/.rbenv/bin" && eval "$(rbenv init --no-rehash - zsh)"
-export_path_if_exists "$HOME/.plenv/bin" && eval "$(plenv init - zsh)"
 export_path_if_exists "$HOME/mysql-build/bin"
 export_path_if_exists $HOMEBREW_ROOT/share/git-core/contrib/workdir
 export_path_if_exists $HOMEBREW_ROOT/share/git-core/contrib/diff-highlight
