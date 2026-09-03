@@ -1,48 +1,12 @@
-[submodule ".vim/ftbundle/javascript/vim-javascript"]
-	path = .vim/ftbundle/javascript/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
-[submodule ".vim/ftbundle/ruby/vim-ruby"]
-	path = .vim/ftbundle/ruby/vim-ruby
-	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/ftbundle/slim/vim-slim"]
-	path = .vim/ftbundle/slim/vim-slim
-	url = https://github.com/slim-template/vim-slim.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-quickrun"]
-	path = .vim/bundle/vim-quickrun
-	url = https://github.com/thinca/vim-quickrun.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = https://github.com/preservim/nerdtree.git
-[submodule ".vim/bundle/EnhCommentify.vim"]
-	path = .vim/bundle/EnhCommentify.vim
-	url = https://github.com/kamipo/EnhCommentify.vim.git
-[submodule ".vim/bundle/ctrlp.vim"]
-	path = .vim/bundle/ctrlp.vim
-	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule ".vim/bundle/vim-unbundle"]
-	path = .vim/bundle/vim-unbundle
-	url = https://github.com/sunaku/vim-unbundle.git
-[submodule ".vim/bundle/vim-indent-guides"]
-	path = .vim/bundle/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule ".vim/bundle/clever-f.vim"]
-	path = .vim/bundle/clever-f.vim
-	url = https://github.com/rhysd/clever-f.vim.git
-[submodule ".vim/bundle/jellybeans.vim"]
-	path = .vim/bundle/jellybeans.vim
-	url = https://github.com/nanotech/jellybeans.vim.git
-[submodule ".vim/bundle/wildfire.vim"]
-	path = .vim/bundle/wildfire.vim
-	url = https://github.com/gcmt/wildfire.vim.git
-[submodule ".vim/ftbundle/json/vim-json"]
-	path = .vim/ftbundle/json/vim-json
-	url = https://github.com/elzr/vim-json.git
-[submodule ".vim/ftbundle/haml/vim-haml"]
-	path = .vim/ftbundle/haml/vim-haml
-	url = https://github.com/tpope/vim-haml.git
-[submodule ".vim/bundle/ale"]
-	path = .vim/bundle/ale
+[submodule ".vim/pack/plugins/start/ale"]
+	path = .vim/pack/plugins/start/ale
 	url = https://github.com/dense-analysis/ale.git
+[submodule ".vim/pack/plugins/start/clever-f.vim"]
+	path = .vim/pack/plugins/start/clever-f.vim
+	url = https://github.com/rhysd/clever-f.vim.git
+[submodule ".vim/pack/plugins/start/jellybeans.vim"]
+	path = .vim/pack/plugins/start/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule ".vim/pack/plugins/start/vim-ruby"]
+	path = .vim/pack/plugins/start/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
