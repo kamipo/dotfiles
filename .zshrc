@@ -181,3 +181,8 @@ fi
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/kamipo/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Rancher Desktop の管理行のように PATH="...:$PATH" 形式で追加されたものは
+# .zshenv の typeset -U が効かず入れ子シェルで重複するため、最後に配列へ
+# 代入し直して重複を取り除く
+path=($path)
