@@ -53,57 +53,6 @@ setopt transient_rprompt
 
 alias ls='ls -A --color'
 alias ll='ls -la'
-alias lll='ll -t'
-
-alias -g V='| vim -R -'
-alias -g L='| less -R'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g W='| wc'
-alias -g S='| sed'
-alias -g A='| awk'
-alias -g X='| xargs'
-alias -g J='| jq'
-
-if type dstat > /dev/null; then
-  alias dstat-full='dstat -Tclmdrn'
-  alias dstat-mem='dstat -Tclm'
-  alias dstat-cpu='dstat -Tclr'
-  alias dstat-net='dstat -Tclnd'
-  alias dstat-disk='dstat -Tcldr'
-fi
-
-alias mysqld-verbose-help='mysqld --verbose --help'
-alias spell='aspell list -l en'
-alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
-
-if [ xLinux = x`uname` ]; then
-  alias crontab='crontab -i'
-  alias hwaddr='ip link show | grep -m1 ether | awk '"'"'{print $2}'"'"
-fi
-
-function static_httpd {
-  if type ruby > /dev/null; then
-    if ruby -v | grep -qm1 'ruby 2\.'; then
-      ruby -run -e httpd -- --port=5000 .
-    else
-      ruby -rwebrick -e 'WEBrick::HTTPServer.new(:Port => 5000, :DocumentRoot => ".").start'
-    fi
-  elif type python > /dev/null; then
-    if python -V 2>&1 | grep -qm1 'Python 3\.'; then
-      python -m http.server 5000
-    else
-      python -m SimpleHTTPServer 5000
-    fi
-  elif type node > /dev/null; then
-    node -e "var c=require('connect'), d=process.env.PWD; c().use(c.logger()).use(c.static(d)).use(c.directory(d)).listen(5000);"
-  elif type php > /dev/null && php -v | grep -qm1 'PHP 5\.[45]\.'; then
-    php -S 0.0.0.0:5000
-  elif type erl > /dev/null; then
-    erl -eval 'inets:start(), inets:start(httpd, [{server_name, "httpd"}, {server_root, "."}, {document_root, "."}, {port, 5000}])'
-  fi
-}
 
 function _ls_chpwd { ls -A --color }
 add-zsh-hook chpwd _ls_chpwd
