@@ -2,6 +2,7 @@ set nocompatible
 
 runtime bundle/vim-unbundle/plugin/unbundle.vim
 runtime macros/matchit.vim
+packadd comment
 
 syntax on
 filetype plugin on
@@ -25,6 +26,8 @@ set number
 set hidden
 
 set wildmenu
+set wildoptions=fuzzy
+set path+=**
 set showmatch
 
 set wrapscan
@@ -83,13 +86,6 @@ nnoremap <C-n> :bn<CR>
 nnoremap ,.  :<C-u>edit $MYVIMRC<CR>
 nnoremap ,s. :<C-u>source $MYVIMRC<CR>
 
-let g:ctrlp_map = '<c-o>'
-let g:EnhCommentifyBindInInsert = 'No'
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
-
 au FileType sql  set timeoutlen=0
 au FileType sh   set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType zsh  set tabstop=2 softtabstop=2 shiftwidth=2
@@ -97,9 +93,8 @@ au FileType ruby set tabstop=2 softtabstop=2 shiftwidth=2
 au FileType yaml set tabstop=2 softtabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.schema set ft=ruby
 
-let g:quickrun_no_default_key_mappings = 1
-nmap <Leader>r <Plug>(quickrun)
-vmap <Leader>r <Plug>(quickrun)
+nmap <Leader>c gccj
+nmap <Leader>x gcc
 
 let g:ale_linters_explicit = 1
 let g:ale_ruby_rubocop_executable = 'bundle'
