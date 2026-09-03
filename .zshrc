@@ -76,7 +76,6 @@ fi
 
 alias mysqld-verbose-help='mysqld --verbose --help'
 alias spell='aspell list -l en'
-alias pmversion='perl -le '"'"'for $module (@ARGV) { eval "use $module"; print "$module ", ${"$module\::VERSION"} || "not found" }'"'"
 alias nlconv='perl -i -pe '"'"'s/\x0D\x0A|\x0D|\x0A/\n/g'"'"
 
 if [ xLinux = x`uname` ]; then
@@ -85,9 +84,7 @@ if [ xLinux = x`uname` ]; then
 fi
 
 function static_httpd {
-  if type plackup > /dev/null; then
-    plackup -MPlack::App::Directory -e 'Plack::App::Directory->new(root => ".")->to_app'
-  elif type ruby > /dev/null; then
+  if type ruby > /dev/null; then
     if ruby -v | grep -qm1 'ruby 2\.'; then
       ruby -run -e httpd -- --port=5000 .
     else
