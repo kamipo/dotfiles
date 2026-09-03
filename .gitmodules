@@ -1,15 +1,12 @@
-[submodule ".vim/ftbundle/ruby/vim-ruby"]
-	path = .vim/ftbundle/ruby/vim-ruby
-	url = https://github.com/vim-ruby/vim-ruby.git
-[submodule ".vim/bundle/vim-unbundle"]
-	path = .vim/bundle/vim-unbundle
-	url = https://github.com/sunaku/vim-unbundle.git
-[submodule ".vim/bundle/clever-f.vim"]
-	path = .vim/bundle/clever-f.vim
-	url = https://github.com/rhysd/clever-f.vim.git
-[submodule ".vim/bundle/jellybeans.vim"]
-	path = .vim/bundle/jellybeans.vim
-	url = https://github.com/nanotech/jellybeans.vim.git
-[submodule ".vim/bundle/ale"]
-	path = .vim/bundle/ale
+[submodule ".vim/pack/plugins/start/ale"]
+	path = .vim/pack/plugins/start/ale
 	url = https://github.com/dense-analysis/ale.git
+[submodule ".vim/pack/plugins/start/clever-f.vim"]
+	path = .vim/pack/plugins/start/clever-f.vim
+	url = https://github.com/rhysd/clever-f.vim.git
+[submodule ".vim/pack/plugins/start/jellybeans.vim"]
+	path = .vim/pack/plugins/start/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim.git
+[submodule ".vim/pack/plugins/start/vim-ruby"]
+	path = .vim/pack/plugins/start/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git

@@ -1,18 +1,6 @@
 set nocompatible
 
-" Plugin settings must come before unbundle: it sources every
-" bundle/*/plugin/*.vim right away, and plugins read these at load time.
-let g:ale_linters_explicit = 1
-let g:ale_ruby_rubocop_executable = 'bundle'
-let g:ale_linters = {
-\   'ruby':       ['rubocop'],
-\   'javascript': ['eslint'],
-\ }
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
-
-runtime bundle/vim-unbundle/plugin/unbundle.vim
+" Plugins live in .vim/pack/plugins/start and load after this file.
 runtime macros/matchit.vim
 packadd comment
 
@@ -107,3 +95,13 @@ au BufNewFile,BufRead *.schema set ft=ruby
 
 nmap <Leader>c gccj
 nmap <Leader>x gcc
+
+let g:ale_linters_explicit = 1
+let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_linters = {
+\   'ruby':       ['rubocop'],
+\   'javascript': ['eslint'],
+\ }
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
