@@ -1,5 +1,7 @@
 # brew bundle
 
+brew "mise"
+
 brew "git"
 brew "ghq"
 brew "gh"

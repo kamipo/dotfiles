@@ -21,16 +21,13 @@ sudo vi /etc/shells
 chpass -s /opt/homebrew/bin/zsh
 ```
 
-### rbenv
+### mise
+
+`brew bundle` で mise が入り、`./dotsetup.sh` で `~/.config/mise/config.toml`
+(`config/mise/config.toml` へのシンボリックリンク) が配置される。
+あとはそこに書かれているバージョンをインストールするだけ。
 
 ```
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
-
 export OPENSSL_ROOT=$(brew --prefix openssl)
 export PATH="$OPENSSL_ROOT/bin:$PATH"
 export LDFLAGS="-L$OPENSSL_ROOT/lib"
@@ -39,7 +36,11 @@ export PKG_CONFIG_PATH="$OPENSSL_ROOT/lib/pkgconfig"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$OPENSSL_ROOT"
 
 # ruby required openssl libyaml, and rust for YJIT
-rbenv install 3.2.3 --keep
-rbenv global  3.2.3
-rbenv rehash
+mise install
+```
+
+バージョンを上げるときは `config/mise/config.toml` を書き換えて `mise install`。
+
+```
+mise use -g ruby@4.0.6  # config.toml を書き換えつつインストールする場合
 ```

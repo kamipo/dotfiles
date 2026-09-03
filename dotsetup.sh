@@ -12,3 +12,6 @@ do
   fi
   ln -nfs $PWD/$dotfile ~/$dotfile
 done
+
+mkdir -p ~/.config/mise
+ln -nfs $PWD/config/mise/config.toml ~/.config/mise/config.toml
