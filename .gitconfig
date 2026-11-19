@@ -16,6 +16,11 @@
 	precomposeunicode = true
 	excludesfile = ~/.gitignore
 	commentchar = ";"
+[diff]
+	; submodule (.vim の vim プラグイン群) の dirty チェックで git status が
+	; 10倍以上遅くなるため、submodule 内の未コミット変更は見に行かない。
+	; submodule 自体のコミットが動いた場合は従来どおり表示される。
+	ignoreSubmodules = dirty
 [push]
 	default = simple
 	autoSetupRemote = true
