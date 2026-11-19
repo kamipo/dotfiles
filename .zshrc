@@ -92,11 +92,23 @@ zstyle ':vcs_info:git+set-message:*' hooks \
 # git の作業コピーのあるディレクトリのみフック関数を呼び出すようにする
 # (.git ディレクトリ内にいるときは呼び出さない)
 # .git ディレクトリ内では git status --porcelain などがエラーになるため
+#
+# この関数は formats のメッセージ数ぶん (最大3回) 呼ばれるため、結果を
+# プロンプト1回ぶんキャッシュして git の起動を1回に抑える。
+# ついでに +vi-git-stash-count が使う stash ログのパスも同じ rev-parse で取る
+# (rev-parse はオプションを並べると結果を1行ずつ返す)。
+# --git-path は worktree や submodule でも正しいパスを返す
+typeset -ga _vcs_git_probe
 function +vi-git-hook-begin() {
-    if [[ $(command git rev-parse --is-inside-work-tree 2> /dev/null) != 'true' ]]; then
-        # 0以外を返すとそれ以降のフック関数は呼び出されない
-        return 1
+    if (( ! $#_vcs_git_probe )); then
+        _vcs_git_probe=( ${(f)"$(command git rev-parse --is-inside-work-tree \
+                                   --git-path logs/refs/stash 2> /dev/null)"} )
+        # git がエラーなら空配列になるので、再実行しないよう false を詰めておく
+        (( $#_vcs_git_probe )) || _vcs_git_probe=( false )
     fi
+
+    # 0以外を返すとそれ以降のフック関数は呼び出されない
+    [[ $_vcs_git_probe[1] == 'true' ]] || return 1
 
     return 0
 }
@@ -130,12 +142,13 @@ function +vi-git-stash-count() {
         return 0
     fi
 
-    # --git-path は worktree や submodule でも正しいパスを返す
-    local stash_log stash
-    stash_log=$(command git rev-parse --git-path logs/refs/stash 2>/dev/null)
-    [[ -f "$stash_log" ]] || return 0
+    # stash ログのパスは +vi-git-hook-begin が rev-parse でまとめて取得済み
+    local stash_log=$_vcs_git_probe[2]
+    [[ -n "$stash_log" && -f "$stash_log" ]] || return 0
 
-    stash=${$(wc -l < "$stash_log")// /}
+    # wc を起動せずシェル内で行数を数える
+    local -a stash_lines=( ${(f)"$(<$stash_log)"} )
+    local stash=$#stash_lines
     if [[ "$stash" -gt 0 ]]; then
         # misc (%m) に追加
         hook_com[misc]+=":S${stash}"
@@ -146,6 +159,7 @@ function +vi-git-stash-count() {
 # 再解釈されないよう、psvar 経由で渡す
 function _update_vcs_info_msg() {
     psvar=()
+    _vcs_git_probe=()
 
     LANG=en_US.UTF-8 vcs_info
 
